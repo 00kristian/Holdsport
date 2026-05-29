@@ -30,8 +30,8 @@ const { t } = useI18n()
 
 const contacts = computed(() => [
   { name: 'William Nistrup', role: t('contact.roles.headCoach'),       phone: '41424242', email: 'william.nistrup@gmail.com' },
-  { name: 'Kristian Berlin', role: t('contact.roles.assistantAdmin'),  phone: '28299303', email: 'kristianberlin1@hotmail.dk' },
   { name: 'Oscar Pino',      role: t('contact.roles.assistantSenior'), phone: '25480117', email: 'oscarpino@hotmail.dk' },
+  { name: 'Kristian Berlin', role: t('contact.roles.assistantAdmin'),  phone: '28299303', email: 'kristianberlin1@hotmail.dk' },
 ])
 </script>
 

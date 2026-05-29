@@ -20,10 +20,10 @@
     266815
   ],
 
-  "_overridesComment": "Per-member detail the Holdsport API does not provide. Key = member id (string). group:'staff' puts them in the Coaches & Staff section. roleKey must match a key under team.roles in src/i18n. emoji shows on the card. alsoPlayer:true keeps a staff member listed in the squad too.",
+  "_overridesComment": "Per-member detail the Holdsport API does not provide. Key = member id (string). group:'staff' puts them in the Coaches & Staff section. roleKey must match a key under team.roles in src/i18n. emoji shows on the card. alsoPlayer:true keeps a staff member listed in the squad too. order sorts the staff section (lower = first); staff without order go last, then alphabetical.",
   "overrides": {
-    "1572015": { "group": "staff", "roleKey": "headCoach", "emoji": "🧑‍🏫", "alsoPlayer": true },
-    "1901293": { "group": "staff", "roleKey": "assistantAdmin", "emoji": "📋", "alsoPlayer": true },
-    "59329": { "group": "staff", "roleKey": "assistantSenior", "emoji": "🧑", "alsoPlayer": true }
+    "1572015": { "group": "staff", "roleKey": "headCoach", "emoji": "🧑‍🏫", "alsoPlayer": true, "order": 1 },
+    "59329": { "group": "staff", "roleKey": "assistantSenior", "emoji": "🧑", "alsoPlayer": true, "order": 2 },
+    "1901293": { "group": "staff", "roleKey": "assistantAdmin", "emoji": "📋", "alsoPlayer": true, "order": 3 }
   }
 }

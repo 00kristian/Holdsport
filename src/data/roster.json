@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-05-29T14:53:06.313Z",
+  "generatedAt": "2026-05-29T15:08:22.877Z",
   "source": "holdsport-api",
   "staff": [
     {
-      "name": "Kristian Berlin",
-      "roleKey": "assistantAdmin",
-      "emoji": "📋"
+      "name": "William Nistrup",
+      "roleKey": "headCoach",
+      "emoji": "🧑‍🏫"
     },
     {
       "name": "Oscar Pino",
@@ -13,9 +13,9 @@
       "emoji": "🧑"
     },
     {
-      "name": "William Nistrup",
-      "roleKey": "headCoach",
-      "emoji": "🧑‍🏫"
+      "name": "Kristian Berlin",
+      "roleKey": "assistantAdmin",
+      "emoji": "📋"
     }
   ],
   "players": [
