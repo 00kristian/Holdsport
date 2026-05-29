@@ -32,6 +32,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          HOLDSPORT_EMAIL: ${{ secrets.HOLDSPORT_EMAIL }}
+          HOLDSPORT_PASSWORD: ${{ secrets.HOLDSPORT_PASSWORD }}
+          HOLDSPORT_TEAM_ID: ${{ secrets.HOLDSPORT_TEAM_ID }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

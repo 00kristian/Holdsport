@@ -6,9 +6,11 @@
       <p>{{ t('newPlayer.subtitle') }}</p>
     </div>
 
-    <div class="info-box" style="margin-bottom: 2rem">
-      <div class="label">🏒 Tip</div>
-      <p>{{ t('newPlayer.tip') }}</p>
+    <p class="intro">{{ t('newPlayer.intro') }}</p>
+
+    <div class="info-box pricing" style="margin-bottom: 2rem">
+      <div class="label">{{ t('newPlayer.pricingLabel') }}</div>
+      <p>{{ t('newPlayer.pricing') }}</p>
     </div>
 
     <!-- Steps -->
@@ -50,6 +52,8 @@ const faq   = computed(() => messages.value[locale.value].newPlayer.faq)
 </script>
 
 <style scoped>
+.intro { color: var(--steel); font-size: 0.98rem; line-height: 1.7; margin: 1.5rem 0; max-width: 60ch; }
+.pricing .label { color: var(--blue-light); }
 .steps { margin-top: 2rem; }
 .step { display: grid; grid-template-columns: 64px 1fr; gap: 1.5rem; padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
 .step:last-child { border-bottom: none; }

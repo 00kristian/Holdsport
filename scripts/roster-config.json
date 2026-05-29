@@ -1,0 +1,29 @@
+{
+  "_comment": "Config for scripts/fetch-roster.mjs. Run `npm run roster:list` to print every Holdsport member with their id + role + name, then adjust the lists below.",
+
+  "teamId": "45904",
+
+  "_excludeComment": "Member IDs to HIDE from the website even though their Holdsport account is still active (e.g. players who haven't shown up in ages). Find IDs via `npm run roster:list`. The name after each id is just a reminder.",
+  "excludeMemberIds": [
+    2322552,
+    1329372,
+    1021949,
+    2113837,
+    1391619,
+    2067485,
+    1537268,
+    594290,
+    610501,
+    5052651,
+    1356581,
+    83852,
+    266815
+  ],
+
+  "_overridesComment": "Per-member detail the Holdsport API does not provide. Key = member id (string). group:'staff' puts them in the Coaches & Staff section. roleKey must match a key under team.roles in src/i18n. emoji shows on the card. alsoPlayer:true keeps a staff member listed in the squad too.",
+  "overrides": {
+    "1572015": { "group": "staff", "roleKey": "headCoach", "emoji": "🧑‍🏫", "alsoPlayer": true },
+    "1901293": { "group": "staff", "roleKey": "assistantAdmin", "emoji": "📋", "alsoPlayer": true },
+    "59329": { "group": "staff", "roleKey": "assistantSenior", "emoji": "🧑", "alsoPlayer": true }
+  }
+}

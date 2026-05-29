@@ -1,0 +1,178 @@
+{
+  "generatedAt": "2026-05-29T14:53:06.313Z",
+  "source": "holdsport-api",
+  "staff": [
+    {
+      "name": "Kristian Berlin",
+      "roleKey": "assistantAdmin",
+      "emoji": "📋"
+    },
+    {
+      "name": "Oscar Pino",
+      "roleKey": "assistantSenior",
+      "emoji": "🧑"
+    },
+    {
+      "name": "William Nistrup",
+      "roleKey": "headCoach",
+      "emoji": "🧑‍🏫"
+    }
+  ],
+  "players": [
+    {
+      "name": "Alex Shelko",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Anton Svejstrup",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Balder Lehmann",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Benjamin Møller",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Christian Keller",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Christian Lacoppidan",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Danny Triesler",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Elias Rasmussen",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Emil Hecht",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Francesco Iannantuono",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Guillem Torner",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "James Curliss",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Jannick W",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Jesper Stig Malle",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Julien Bedard",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Karl Beckman",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Kim Stig Malle",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Kristian Berlin",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Lauritz Trolle",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Mads Monies",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Maksim Telelekov",
+      "roleKey": "goalie",
+      "emoji": "🥅"
+    },
+    {
+      "name": "Maxime Bettez",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Michael Prencipe",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Oscar Pino",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Seb Jensen",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Sebastian Ammitsøe",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Simon Søgaard Heidensleben",
+      "roleKey": "goalie",
+      "emoji": "🥅"
+    },
+    {
+      "name": "Toby Keating",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Toni Tuira",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "Viktor Pesenti",
+      "roleKey": "player",
+      "emoji": "🏒"
+    },
+    {
+      "name": "William Nistrup",
+      "roleKey": "player",
+      "emoji": "🏒"
+    }
+  ]
+}
