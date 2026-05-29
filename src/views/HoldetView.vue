@@ -23,48 +23,16 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import MemberCard from '../components/MemberCard.vue'
+import roster from '../data/roster.json'
 
 const { t } = useI18n()
 
-const staff = computed(() => [
-  { name: 'William Nistrup', role: t('team.roles.headCoach'),       emoji: '🧑‍🏫' },
-  { name: 'Kristian Berlin', role: t('team.roles.assistantAdmin'),  emoji: '📋' },
-  { name: 'Oscar Pino',      role: t('team.roles.assistantSenior'), emoji: '🧑' },
-])
+// Roster is generated from the Holdsport API (scripts/fetch-roster.mjs) and
+// already filtered + sorted by name. Here we just resolve the role label.
+const toMember = (m) => ({ name: m.name, role: t(`team.roles.${m.roleKey}`), emoji: m.emoji })
 
-const players = computed(() => [
-  { name: 'Sebastian Ammitsøe',         role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Karl Beckman',               role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Julien Bedard',              role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Kristian Berlin',            role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Maxime Bettez',              role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'James Curliss',              role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Emil Hecht',                 role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Francesco Iannantuono',      role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Seb Jensen',                 role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Toby Keating',               role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Christian Keller',           role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Christian Lacoppidan',       role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Balder Lehmann',             role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Jesper Stig Malle',          role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Kim Stig Malle',             role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Mads Monies',                role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Benjamin Møller',            role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'William Nistrup',            role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Viktor Pesenti',             role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Oscar Pino',                 role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Michael Prencipe',           role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Elias Rasmussen',            role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Alex Shelko',                role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Simon Søgaard Heidensleben', role: t('team.roles.goalie'), emoji: '🥅' },
-  { name: 'Anton Svejstrup',            role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Maksim Telelekov',           role: t('team.roles.goalie'), emoji: '🥅' },
-  { name: 'Guillem Torner',             role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Danny Triesler',             role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Lauritz Trolle',             role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Toni Tuira',                 role: t('team.roles.player'), emoji: '🏒' },
-  { name: 'Jannick W',                  role: t('team.roles.player'), emoji: '🏒' },
-])
+const staff = computed(() => roster.staff.map(toMember))
+const players = computed(() => roster.players.map(toMember))
 </script>
 
 <style scoped>

@@ -8,7 +8,7 @@
       <div class="hero-jersey">9</div>
       <div class="hero-content container">
         <div class="hero-left">
-          <div class="hero-kicker">{{ t('home.kicker') }}</div>
+          <div class="hero-kicker">{{ t('home.kicker', { season }) }}</div>
           <h1>{{ t('home.h1') }}<em>{{ t('home.h1em') }}</em></h1>
           <p class="hero-sub">{{ t('home.sub') }}</p>
           <div class="hero-actions">
@@ -49,13 +49,17 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { currentSeason } from '../utils/season.js'
+import roster from '../data/roster.json'
 
 const { t } = useI18n()
 
+const season = currentSeason()
+
 const stats = computed(() => [
-  { value: '26/27', label: t('home.statSeason') },
-  { value: '31',    label: t('home.statPlayers') },
-  { value: '3',     label: t('home.statCoaches') },
+  { value: season,                          label: t('home.statSeason') },
+  { value: String(roster.players.length),   label: t('home.statPlayers') },
+  { value: String(roster.staff.length),     label: t('home.statCoaches') },
 ])
 
 const quickLinks = computed(() => [

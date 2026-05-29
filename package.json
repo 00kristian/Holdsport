@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/fetch-roster.mjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "roster": "node scripts/fetch-roster.mjs",
+    "roster:teams": "node scripts/fetch-roster.mjs --teams",
+    "roster:list": "node scripts/fetch-roster.mjs --list"
   },
   "dependencies": {
     "pinia": "^2.1.0",
