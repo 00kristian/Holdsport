@@ -7,30 +7,36 @@
       </RouterLink>
 
       <ul class="nav-links">
-        <li><RouterLink to="/">Forside</RouterLink></li>
-        <li><RouterLink to="/ny-spiller">Ny Spiller</RouterLink></li>
+        <li><RouterLink to="/">{{ t('nav.home') }}</RouterLink></li>
+        <li><RouterLink to="/ny-spiller">{{ t('nav.newPlayer') }}</RouterLink></li>
 
-        <!-- Regler dropdown -->
+        <!-- Rules dropdown -->
         <li class="dropdown" @mouseenter="dropdownOpen = true" @mouseleave="dropdownOpen = false">
           <RouterLink to="/regler" class="dropdown-trigger">
-            Regler <span class="arrow">▾</span>
+            {{ t('nav.rules') }} <span class="arrow">▾</span>
           </RouterLink>
           <Transition name="dropdown-fade">
             <div v-show="dropdownOpen" class="dropdown-menu">
               <RouterLink to="/regler" @click="setReglerTab('generelle'); dropdownOpen = false">
-                Generelle Regler
+                {{ t('nav.generalRules') }}
               </RouterLink>
               <RouterLink to="/regler" @click="setReglerTab('burger'); dropdownOpen = false">
-                🍔 Burger Cup Regler
+                {{ t('nav.burgerCupRules') }}
               </RouterLink>
             </div>
           </Transition>
         </li>
 
-        <li><RouterLink to="/holdet">Holdet</RouterLink></li>
-        <li><RouterLink to="/kontakt">Kontakt</RouterLink></li>
-        <li><RouterLink to="/program">Program</RouterLink></li>
+        <li><RouterLink to="/holdet">{{ t('nav.team') }}</RouterLink></li>
+        <li><RouterLink to="/kontakt">{{ t('nav.contact') }}</RouterLink></li>
+        <li><RouterLink to="/program">{{ t('nav.schedule') }}</RouterLink></li>
       </ul>
+
+      <!-- Language switcher -->
+      <div class="lang-switcher">
+        <button :class="['lang-btn', { active: locale === 'da' }]" @click="setLocale('da')" title="Dansk">🇩🇰</button>
+        <button :class="['lang-btn', { active: locale === 'en' }]" @click="setLocale('en')" title="English">🇬🇧</button>
+      </div>
 
     </div>
   </nav>
@@ -38,13 +44,20 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useReglerStore } from '../stores/regler.js'
 
+const { t, locale } = useI18n()
 const dropdownOpen = ref(false)
 const reglerStore  = useReglerStore()
 
 function setReglerTab(tab) {
   reglerStore.activeTab = tab
+}
+
+function setLocale(lang) {
+  locale.value = lang
+  localStorage.setItem('lang', lang)
 }
 </script>
 
@@ -104,7 +117,19 @@ function setReglerTab(tab) {
 .dropdown-fade-enter-from { opacity: 0; transform: translateY(-4px); }
 .dropdown-fade-leave-to   { opacity: 0; }
 
+/* Language switcher */
+.lang-switcher { display: flex; gap: 0.25rem; margin-left: 0.75rem; }
+.lang-btn {
+  background: none; border: 1px solid transparent;
+  border-radius: var(--radius-sm); padding: 0.2rem 0.4rem;
+  font-size: 1.2rem; cursor: pointer; line-height: 1;
+  opacity: 0.45; transition: opacity 0.15s, border-color 0.15s;
+}
+.lang-btn:hover { opacity: 0.8; }
+.lang-btn.active { opacity: 1; border-color: var(--border2); }
+
 @media (max-width: 640px) {
   .nav-links a, .dropdown-trigger { font-size: 0.78rem; padding: 0.4rem 0.5rem; }
+  .lang-btn { font-size: 1rem; }
 }
 </style>

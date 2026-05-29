@@ -18,17 +18,18 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps({
   activity: { type: Object, required: true },
 })
 
-const MONTHS = ['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec']
+const { t, messages, locale } = useI18n()
 
-const date = computed(() => new Date(props.activity.starttime || props.activity.start_time || props.activity.date))
+const date  = computed(() => new Date(props.activity.starttime || props.activity.start_time || props.activity.date))
 const day   = computed(() => date.value.getDate())
-const month = computed(() => MONTHS[date.value.getMonth()])
-const time  = computed(() => date.value.toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' }))
+const month = computed(() => messages.value[locale.value].activity.months[date.value.getMonth()])
+const time  = computed(() => date.value.toLocaleTimeString(locale.value === 'da' ? 'da-DK' : 'en-GB', { hour: '2-digit', minute: '2-digit' }))
 
 const status = computed(() => props.activity.users_status || props.activity.attending_status || '')
 const badgeClass = computed(() => {
@@ -38,9 +39,9 @@ const badgeClass = computed(() => {
   return 'badge badge-muted'
 })
 const badgeLabel = computed(() => {
-  if (status.value === 'attending'  || status.value === 1) return 'Tilmeldt'
-  if (status.value === 'declined'   || status.value === 2) return 'Frameldt'
-  if (status.value === 'pending'    || status.value === 0) return 'Afventer'
+  if (status.value === 'attending'  || status.value === 1) return t('activity.attending')
+  if (status.value === 'declined'   || status.value === 2) return t('activity.declined')
+  if (status.value === 'pending'    || status.value === 0) return t('activity.pending')
   return '–'
 })
 </script>

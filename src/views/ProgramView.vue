@@ -2,50 +2,50 @@
   <main class="container page-wrap">
     <div class="page-header">
       <div class="accent-line"><span></span></div>
-      <h1>PROGRAM</h1>
-      <p>Kommende træning og kampe — live fra Holdsport.</p>
+      <h1>{{ t('program.title') }}</h1>
+      <p>{{ t('program.subtitle') }}</p>
     </div>
 
     <!-- Login form (shown when not logged in) -->
     <div v-if="!authStore.isLoggedIn" class="auth-panel">
-      <h3>LOG IND MED HOLDSPORT</h3>
+      <h3>{{ t('program.loginTitle') }}</h3>
       <div class="field">
-        <label>Email</label>
+        <label>{{ t('program.emailLabel') }}</label>
         <input v-model="form.email" type="email" placeholder="din@email.dk" @keyup.enter="submit" />
       </div>
       <div class="field">
-        <label>Adgangskode</label>
+        <label>{{ t('program.passwordLabel') }}</label>
         <input v-model="form.password" type="password" placeholder="••••••••" @keyup.enter="submit" />
       </div>
       <div class="field">
-        <label>Hold-ID</label>
-        <input v-model="form.teamId" type="text" placeholder="f.eks. 6237" @keyup.enter="submit" />
+        <label>{{ t('program.teamIdLabel') }}</label>
+        <input v-model="form.teamId" type="text" :placeholder="t('program.teamIdPlaceholder')" @keyup.enter="submit" />
       </div>
       <button class="btn btn-primary submit-btn" @click="submit" :disabled="programStore.loading">
-        {{ programStore.loading ? 'Henter…' : 'Hent Program' }}
+        {{ programStore.loading ? t('program.btnLoading') : t('program.btnFetch') }}
       </button>
       <div class="cors-warn">
-        <strong>⚠ CORS-begrænsning</strong>
-        Holdsport API'et tillader ikke direkte browserkald. En Cloudflare Worker proxy løser dette (gratis, ~10 linjer JS).
+        <strong>{{ t('program.corsTitle') }}</strong>
+        {{ t('program.corsText') }}
       </div>
     </div>
 
     <!-- Logged in: show activities or error -->
     <div v-else>
       <div class="session-bar">
-        <span>Logget ind som <strong>{{ authStore.email }}</strong> · Hold {{ authStore.teamId }}</span>
-        <button class="btn btn-ghost logout-btn" @click="logout">Log ud</button>
+        <span>{{ t('program.loggedInAs') }} <strong>{{ authStore.email }}</strong> · {{ t('program.teamLabel') }} {{ authStore.teamId }}</span>
+        <button class="btn btn-ghost logout-btn" @click="logout">{{ t('program.logout') }}</button>
       </div>
 
       <!-- Error state -->
       <div v-if="programStore.error" class="error-box">
-        <strong>Fejl</strong>{{ programStore.error }}
+        <strong>{{ t('program.errorLabel') }}</strong>{{ programStore.error }}
       </div>
 
       <!-- Loading state -->
       <div v-else-if="programStore.loading" class="loading-box">
         <div class="spinner"></div>
-        <p>Henter aktiviteter…</p>
+        <p>{{ t('program.fetching') }}</p>
       </div>
 
       <!-- Activities -->
@@ -58,7 +58,7 @@
       </div>
 
       <div v-else class="empty-state">
-        Ingen kommende aktiviteter fundet.
+        {{ t('program.empty') }}
       </div>
     </div>
   </main>
@@ -66,21 +66,20 @@
 
 <script setup>
 import { reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useAuthStore }    from '../stores/auth.js'
 import { useProgramStore } from '../stores/program.js'
 import ActivityCard from '../components/ActivityCard.vue'
 
+const { t } = useI18n()
 const authStore    = useAuthStore()
 const programStore = useProgramStore()
 
-// Local form state — only used until credentials are submitted
 const form = reactive({ email: '', password: '', teamId: '' })
 
 async function submit() {
   if (!form.email || !form.password || !form.teamId) return
-  // Save credentials to Pinia auth store
   authStore.setCredentials(form.email, form.password, form.teamId)
-  // Trigger fetch in program store
   await programStore.fetchActivities()
 }
 
