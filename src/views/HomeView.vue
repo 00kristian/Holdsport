@@ -8,12 +8,12 @@
       <div class="hero-jersey">9</div>
       <div class="hero-content container">
         <div class="hero-left">
-          <div class="hero-kicker">Sæson 26/27</div>
-          <h1>VELKOMMEN<em>TIL HOLDET</em></h1>
-          <p class="hero-sub">Alt hvad du behøver — regler, holdinfo og kontakt på ét sted. Ny spiller? Start her.</p>
+          <div class="hero-kicker">{{ t('home.kicker') }}</div>
+          <h1>{{ t('home.h1') }}<em>{{ t('home.h1em') }}</em></h1>
+          <p class="hero-sub">{{ t('home.sub') }}</p>
           <div class="hero-actions">
-            <RouterLink to="/ny-spiller" class="btn btn-primary">⚡ Ny Spiller</RouterLink>
-            <RouterLink to="/regler"     class="btn btn-ghost">Læs Regler</RouterLink>
+            <RouterLink to="/ny-spiller" class="btn btn-primary">{{ t('home.btnNewPlayer') }}</RouterLink>
+            <RouterLink to="/regler"     class="btn btn-ghost">{{ t('home.btnRules') }}</RouterLink>
           </div>
         </div>
       </div>
@@ -28,16 +28,20 @@
         </div>
       </div>
     </div>
-
   </main>
 </template>
 
 <script setup>
-const stats = [
-  { value: '26/27', label: 'Sæson' },
-  { value: '31',    label: 'Spillere' },
-  { value: '3',     label: 'Trænere' },
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const stats = computed(() => [
+  { value: '26/27', label: t('home.statSeason') },
+  { value: '31',    label: t('home.statPlayers') },
+  { value: '3',     label: t('home.statCoaches') },
+])
 </script>
 
 <style scoped>

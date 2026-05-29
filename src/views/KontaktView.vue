@@ -2,8 +2,8 @@
   <main class="container page-wrap">
     <div class="page-header">
       <div class="accent-line"><span></span></div>
-      <h1>KONTAKT</h1>
-      <p>Find de rette at kontakte.</p>
+      <h1>{{ t('contact.title') }}</h1>
+      <p>{{ t('contact.subtitle') }}</p>
     </div>
 
     <div class="contact-grid">
@@ -16,18 +16,23 @@
     </div>
 
     <div class="info-box" style="margin-top: 2.5rem">
-      <div class="label">Info</div>
-      <p>Brug primært Holdsport-appen til daglig kommunikation. For praktiske spørgsmål — skriv til holdlederen.</p>
+      <div class="label">{{ t('contact.infoLabel') }}</div>
+      <p>{{ t('contact.infoText') }}</p>
     </div>
   </main>
 </template>
 
 <script setup>
-const contacts = [
-  { name: 'William Nistrup', role: 'Cheftræner',                             phone: '41424242',               email: 'william.nistrup@gmail.com' },
-  { name: 'Kristian Berlin', role: 'Assistenttræner / Holdleder / Admin',    phone: '28299303',               email: 'kristianberlin1@hotmail.dk' },
-  { name: 'Oscar Pino',      role: 'Assistenttræner / Senior ansvarlig',     phone: '25480117',               email: 'oscarpino@hotmail.dk' },
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const contacts = computed(() => [
+  { name: 'William Nistrup', role: t('contact.roles.headCoach'),       phone: '41424242', email: 'william.nistrup@gmail.com' },
+  { name: 'Kristian Berlin', role: t('contact.roles.assistantAdmin'),  phone: '28299303', email: 'kristianberlin1@hotmail.dk' },
+  { name: 'Oscar Pino',      role: t('contact.roles.assistantSenior'), phone: '25480117', email: 'oscarpino@hotmail.dk' },
+])
 </script>
 
 <style scoped>
