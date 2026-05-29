@@ -138,7 +138,14 @@ body {
 .fade-leave-to   { opacity: 0; }
 
 /* ---- Responsive ---- */
-@media (max-width: 640px) {
-  .container { padding: 0 1.25rem; }
+@media (max-width: 768px) {
+  .container  { padding: 0 1rem; }
   .page-wrap  { padding: 2rem 0 4rem; }
+  .page-header { margin-bottom: 1.75rem; }
+  .btn { padding: 0.65rem 1.25rem; font-size: 0.85rem; }
+}
+
+@media (max-width: 480px) {
+  .container  { padding: 0 0.875rem; }
+  .page-wrap  { padding: 1.5rem 0 3rem; }
 }

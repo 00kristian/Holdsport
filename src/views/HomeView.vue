@@ -97,4 +97,15 @@ const stats = computed(() => [
 .stat-item:last-child { border-right: none; }
 .stat-num { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.06em; color: var(--white-pure); line-height: 1; }
 .stat-label { font-family: var(--font-cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 0.1rem; }
+
+@media (max-width: 768px) {
+  .hero { min-height: 380px; }
+  .hero-content { padding: 2.5rem 0 2.5rem; }
+  .hero-jersey { font-size: 12rem; opacity: 0.3; right: -1rem; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .stat-item { padding: 0.6rem 0.5rem; }
+  .stat-num  { font-size: 1.2rem; }
+  .stat-label { font-size: 0.6rem; letter-spacing: 0.06em; }
+}
 </style>

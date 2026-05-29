@@ -116,4 +116,9 @@ function logout() {
 
 .activity-list { display: flex; flex-direction: column; gap: 0.5rem; }
 .empty-state { color: var(--muted); padding: 2rem 0; font-size: 0.9rem; }
+
+@media (max-width: 480px) {
+  .auth-panel { padding: 1.25rem; }
+  .session-bar { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+}
 </style>

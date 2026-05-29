@@ -61,4 +61,9 @@ const badgeLabel = computed(() => {
 .act-name { font-family: var(--font-cond); font-weight: 700; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--white); margin-bottom: 0.25rem; }
 .act-meta { font-size: 0.8rem; color: var(--steel); display: flex; gap: 1rem; flex-wrap: wrap; }
 .badge-red { background: #2a0a0a; color: #e05060; border: 1px solid #4a1020; }
+
+@media (max-width: 480px) {
+  .activity-card { grid-template-columns: 48px 1fr; grid-template-rows: auto auto; }
+  .activity-card .badge { grid-column: 2; justify-self: start; margin-top: 0.25rem; }
+}
 </style>

@@ -43,4 +43,8 @@ const contacts = computed(() => [
 .contact-line { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--steel); margin-top: 0.4rem; }
 .contact-line a { color: var(--blue-light); text-decoration: none; }
 .contact-line a:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
 </style>
