@@ -3,7 +3,7 @@
     <div class="nav-inner">
 
       <RouterLink to="/" class="logo" @click="menuOpen = false">
-        🏒 HOLDET<em>.</em>
+        🏒 KSF<em> 2.Div</em>
       </RouterLink>
 
       <!-- Desktop nav links -->

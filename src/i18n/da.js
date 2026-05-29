@@ -12,12 +12,20 @@ export default {
   home: {
     kicker: 'Sæson 26/27',
     h1: 'VELKOMMEN',
-    h1em: 'TIL HOLDET',
+    h1em: 'TIL KSF 2.DIV',
     sub: 'Alt hvad du behøver — regler, holdinfo og kontakt på ét sted. Ny spiller? Start her.',
     btnNewPlayer: '⚡ Ny Spiller',
     btnRules: 'Læs Regler',
     statSeason: 'Sæson',
     statPlayers: 'Spillere',
+    quickLabel: 'Hurtig adgang',
+    ql: {
+      newPlayer: { title: 'Ny Spiller',  desc: 'Ny på holdet? Start her.' },
+      rules:     { title: 'Regler',      desc: 'Generelle regler og Burger Cup.' },
+      team:      { title: 'Holdet',      desc: 'Mød spillere og trænerstaben.' },
+      contact:   { title: 'Kontakt',     desc: 'Skriv til trænerne.' },
+      schedule:  { title: 'Program',     desc: 'Træning og kampe fra Holdsport.' },
+    },
     statCoaches: 'Trænere',
   },
   newPlayer: {

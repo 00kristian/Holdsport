@@ -28,6 +28,21 @@
         </div>
       </div>
     </div>
+
+    <!-- Quick links -->
+    <div class="container quick-links">
+      <div class="section-label" style="margin-top: 2rem">{{ t('home.quickLabel') }}</div>
+      <nav class="link-list">
+        <RouterLink v-for="link in quickLinks" :key="link.to" :to="link.to" class="link-row">
+          <span class="link-icon">{{ link.icon }}</span>
+          <span class="link-body">
+            <span class="link-title">{{ link.title }}</span>
+            <span class="link-desc">{{ link.desc }}</span>
+          </span>
+          <span class="link-arrow">›</span>
+        </RouterLink>
+      </nav>
+    </div>
   </main>
 </template>
 
@@ -41,6 +56,14 @@ const stats = computed(() => [
   { value: '26/27', label: t('home.statSeason') },
   { value: '31',    label: t('home.statPlayers') },
   { value: '3',     label: t('home.statCoaches') },
+])
+
+const quickLinks = computed(() => [
+  { to: '/ny-spiller', icon: '⚡', title: t('home.ql.newPlayer.title'), desc: t('home.ql.newPlayer.desc') },
+  { to: '/regler',     icon: '📋', title: t('home.ql.rules.title'),     desc: t('home.ql.rules.desc') },
+  { to: '/holdet',     icon: '👥', title: t('home.ql.team.title'),      desc: t('home.ql.team.desc') },
+  { to: '/kontakt',    icon: '📬', title: t('home.ql.contact.title'),   desc: t('home.ql.contact.desc') },
+  { to: '/program',    icon: '📅', title: t('home.ql.schedule.title'),  desc: t('home.ql.schedule.desc') },
 ])
 </script>
 
@@ -87,7 +110,7 @@ const stats = computed(() => [
   letter-spacing: 0.04em; line-height: 0.9;
   color: var(--white-pure); margin-bottom: 1.25rem;
 }
-.hero h1 em { color: var(--blue-light); font-style: normal; display: block; }
+.hero h1 em { color: var(--blue-light); font-style: normal; display: block; margin-top: 0.15em; }
 .hero-sub { color: var(--steel); font-size: 1rem; max-width: 420px; margin-bottom: 2rem; line-height: 1.5; }
 .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
@@ -97,6 +120,28 @@ const stats = computed(() => [
 .stat-item:last-child { border-right: none; }
 .stat-num { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.06em; color: var(--white-pure); line-height: 1; }
 .stat-label { font-family: var(--font-cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 0.1rem; }
+
+/* Quick links */
+.quick-links { padding-bottom: 3rem; }
+.link-list { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.link-row {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.25rem;
+  text-decoration: none; color: var(--white);
+  background: var(--navy2);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.link-row:last-child { border-bottom: none; }
+.link-row:hover { background: var(--navy3); }
+.link-icon { font-size: 1.25rem; flex-shrink: 0; width: 2rem; text-align: center; }
+.link-body { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.link-title {
+  font-family: var(--font-cond); font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--white-pure);
+}
+.link-desc { font-size: 0.8rem; color: var(--steel); margin-top: 0.1rem; }
+.link-arrow { font-size: 1.4rem; color: var(--blue-light); flex-shrink: 0; line-height: 1; }
 
 @media (max-width: 768px) {
   .hero { min-height: unset; }
