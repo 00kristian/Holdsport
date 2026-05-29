@@ -5,14 +5,14 @@
       <div class="act-month">{{ month }}</div>
     </div>
     <div class="act-info">
-      <div class="act-name">{{ activity.name || 'Aktivitet' }}</div>
+      <div class="act-name">{{ activity.name || t('activity.fallbackName') }}</div>
       <div class="act-meta">
-        <span v-if="time">🕐 {{ time }}</span>
+        <span v-if="timeRange">🕐 {{ timeRange }}</span>
         <span v-if="activity.place">📍 {{ activity.place }}</span>
-        <span v-if="activity.users_attending != null">👥 {{ activity.users_attending }}</span>
+        <span v-if="activity.attending">👥 {{ activity.attending }} {{ t('activity.attendingCount') }}</span>
       </div>
     </div>
-    <span :class="['badge', badgeClass]">{{ badgeLabel }}</span>
+    <span v-if="activity.eventType" :class="['badge', badgeClass]">{{ eventTypeLabel }}</span>
   </div>
 </template>
 
@@ -24,26 +24,29 @@ const props = defineProps({
   activity: { type: Object, required: true },
 })
 
-const { t, messages, locale } = useI18n()
+const { t, tm, locale } = useI18n()
 
-const date  = computed(() => new Date(props.activity.starttime || props.activity.start_time || props.activity.date))
+const date  = computed(() => new Date(props.activity.start))
 const day   = computed(() => date.value.getDate())
-const month = computed(() => messages.value[locale.value].activity.months[date.value.getMonth()])
-const time  = computed(() => date.value.toLocaleTimeString(locale.value === 'da' ? 'da-DK' : 'en-GB', { hour: '2-digit', minute: '2-digit' }))
+const month = computed(() => tm('activity.months')[date.value.getMonth()])
 
-const status = computed(() => props.activity.users_status || props.activity.attending_status || '')
-const badgeClass = computed(() => {
-  if (status.value === 'attending'  || status.value === 1) return 'badge badge-green'
-  if (status.value === 'declined'   || status.value === 2) return 'badge badge-red'
-  if (status.value === 'pending'    || status.value === 0) return 'badge badge-yellow'
-  return 'badge badge-muted'
+const fmtTime = (d) =>
+  d.toLocaleTimeString(locale.value === 'da' ? 'da-DK' : 'en-GB', { hour: '2-digit', minute: '2-digit' })
+
+// Show the full duration, e.g. "21:00–23:00" (falls back to just the start).
+const timeRange = computed(() => {
+  if (!props.activity.start) return ''
+  const start = fmtTime(date.value)
+  return props.activity.end ? `${start}–${fmtTime(new Date(props.activity.end))}` : start
 })
-const badgeLabel = computed(() => {
-  if (status.value === 'attending'  || status.value === 1) return t('activity.attending')
-  if (status.value === 'declined'   || status.value === 2) return t('activity.declined')
-  if (status.value === 'pending'    || status.value === 0) return t('activity.pending')
-  return '–'
+
+// Holdsport event types come back in Danish; translate the common ones, fall
+// back to the raw value for anything we don't recognise.
+const eventTypeLabel = computed(() => {
+  const map = tm('activity.eventTypes') || {}
+  return map[props.activity.eventType] || props.activity.eventType
 })
+const badgeClass = computed(() => (/kamp|match|game/i.test(props.activity.eventType) ? 'badge-green' : 'badge-muted'))
 </script>
 
 <style scoped>
@@ -60,7 +63,6 @@ const badgeLabel = computed(() => {
 .act-month { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 .act-name { font-family: var(--font-cond); font-weight: 700; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--white); margin-bottom: 0.25rem; }
 .act-meta { font-size: 0.8rem; color: var(--steel); display: flex; gap: 1rem; flex-wrap: wrap; }
-.badge-red { background: #2a0a0a; color: #e05060; border: 1px solid #4a1020; }
 
 @media (max-width: 480px) {
   .activity-card { grid-template-columns: 48px 1fr; grid-template-rows: auto auto; }

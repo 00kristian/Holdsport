@@ -3,6 +3,9 @@
 
   "teamId": "45904",
 
+  "_programExcludeComment": "Activity names to HIDE from the Program page (case-insensitive substring match). Used for open drop-in sessions that aren't our team.",
+  "programExcludeNames": ["Åben Senior"],
+
   "_excludeComment": "Member IDs to HIDE from the website even though their Holdsport account is still active (e.g. players who haven't shown up in ages). Find IDs via `npm run roster:list`. The name after each id is just a reminder.",
   "excludeMemberIds": [
     2322552,
