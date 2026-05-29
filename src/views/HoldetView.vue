@@ -60,7 +60,6 @@ const players = [
   { name: 'Lauritz Trolle',             role: 'Spiller', emoji: '🏒' },
   { name: 'Toni Tuira',                 role: 'Spiller', emoji: '🏒' },
   { name: 'Jannick W',                  role: 'Spiller', emoji: '🏒' },
-  { name: 'Eliot Yarbrough #34',        role: 'Spiller', emoji: '🏒' },
 ]
 </script>
 
