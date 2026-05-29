@@ -1,0 +1,116 @@
+{
+  "generatedAt": "2026-05-29T15:15:10.408Z",
+  "source": "holdsport-api",
+  "events": [
+    {
+      "id": 53748256,
+      "name": "2.division (omkl. 2)",
+      "eventType": "Træning",
+      "start": "2026-06-01T21:00:00+02:00",
+      "end": "2026-06-01T23:00:00+02:00",
+      "place": "KSF",
+      "comment": "",
+      "attending": 13
+    },
+    {
+      "id": 53748262,
+      "name": "2.division (omkl. 2)",
+      "eventType": "Træning",
+      "start": "2026-06-03T21:05:00+02:00",
+      "end": "2026-06-03T21:55:00+02:00",
+      "place": "KSF",
+      "comment": "",
+      "attending": 7
+    },
+    {
+      "id": 53441498,
+      "name": "Burger cup party 🎉",
+      "eventType": "Social aktivitet",
+      "start": "2026-06-06T00:00:00+02:00",
+      "end": null,
+      "place": "Hørsholmsgade 22A, 1tv, 2200 København",
+      "comment": "",
+      "attending": 23
+    },
+    {
+      "id": 54032339,
+      "name": "KSF sommerfest",
+      "eventType": "Social aktivitet",
+      "start": "2026-06-06T15:00:00+02:00",
+      "end": "2026-06-06T21:00:00+02:00",
+      "place": "Østerbro Skøjtehal",
+      "comment": "Sommerfest for hele klubben! Fra løve til OB:-)\n\nDer vil være aktiviteter på og udenfor isen.\nBilletpris dækker mad og snacks. \nDrikkevarer kan købes i kiosken og må også gerne medbringes:-)\n\nMere detaljeret program følger (Bemærk at antallet af tilmeldte/afmeldte, etc. for denne aktivitet kan afvige fra webversionen)",
+      "attending": 68
+    },
+    {
+      "id": 53748257,
+      "name": "2.division (omkl. 2)",
+      "eventType": "Træning",
+      "start": "2026-06-08T21:00:00+02:00",
+      "end": "2026-06-08T23:00:00+02:00",
+      "place": "KSF",
+      "comment": "",
+      "attending": 4
+    },
+    {
+      "id": 53748263,
+      "name": "2.division (omkl. 2)",
+      "eventType": "Træning",
+      "start": "2026-06-10T21:05:00+02:00",
+      "end": "2026-06-10T21:55:00+02:00",
+      "place": "KSF",
+      "comment": "",
+      "attending": 3
+    },
+    {
+      "id": 53748258,
+      "name": "2.division (omkl. 2)",
+      "eventType": "Træning",
+      "start": "2026-06-15T21:00:00+02:00",
+      "end": "2026-06-15T23:00:00+02:00",
+      "place": "KSF",
+      "comment": "",
+      "attending": 4
+    },
+    {
+      "id": 53748264,
+      "name": "2.division (omkl. 2)",
+      "eventType": "Træning",
+      "start": "2026-06-17T21:05:00+02:00",
+      "end": "2026-06-17T21:55:00+02:00",
+      "place": "KSF",
+      "comment": "",
+      "attending": 3
+    },
+    {
+      "id": 53748259,
+      "name": "2.division (omkl. 2)",
+      "eventType": "Træning",
+      "start": "2026-06-22T21:00:00+02:00",
+      "end": "2026-06-22T23:00:00+02:00",
+      "place": "KSF",
+      "comment": "",
+      "attending": 3
+    },
+    {
+      "id": 53748265,
+      "name": "2.division (omkl. 2)",
+      "eventType": "Træning",
+      "start": "2026-06-24T21:05:00+02:00",
+      "end": "2026-06-24T21:55:00+02:00",
+      "place": "KSF",
+      "comment": "",
+      "attending": 2
+    },
+    {
+      "id": 53748260,
+      "name": "2.division (omkl. 2)",
+      "eventType": "Træning",
+      "start": "2026-06-29T21:00:00+02:00",
+      "end": "2026-06-29T23:00:00+02:00",
+      "place": "KSF",
+      "comment": "",
+      "attending": 2
+    }
+  ]
+}
