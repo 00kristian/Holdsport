@@ -12,13 +12,21 @@ export default {
   home: {
     kicker: 'Season 26/27',
     h1: 'WELCOME',
-    h1em: 'TO THE TEAM',
+    h1em: 'TO KSF 2.DIV',
     sub: 'Everything you need — rules, team info and contacts in one place. New player? Start here.',
     btnNewPlayer: '⚡ New Player',
     btnRules: 'Read Rules',
     statSeason: 'Season',
     statPlayers: 'Players',
     statCoaches: 'Coaches',
+    quickLabel: 'Quick access',
+    ql: {
+      newPlayer: { title: 'New Player', desc: 'New to the team? Start here.' },
+      rules:     { title: 'Rules',      desc: 'General rules and Burger Cup.' },
+      team:      { title: 'The Team',   desc: 'Meet the players and coaches.' },
+      contact:   { title: 'Contact',    desc: 'Get in touch with the coaches.' },
+      schedule:  { title: 'Schedule',   desc: 'Training and games from Holdsport.' },
+    },
   },
   newPlayer: {
     title: 'NEW PLAYER',

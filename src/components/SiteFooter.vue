@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container">
-      HOLDET · {{ new Date().getFullYear() }}
+      KSF 2.DIV · {{ new Date().getFullYear() }}
     </div>
   </footer>
 </template>
