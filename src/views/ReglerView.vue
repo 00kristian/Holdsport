@@ -66,4 +66,10 @@ const burgerRules  = computed(() => messages.value[locale.value].rules.burger)
 .burger-icon { font-size: 2rem; }
 .burger-header h3 { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.06em; color: var(--white-pure); }
 .burger-header p { font-size: 0.84rem; color: var(--steel); }
+
+@media (max-width: 480px) {
+  .rules-tabs { flex-wrap: wrap; }
+  .rtab { flex: 1; text-align: center; font-size: 0.82rem; padding: 0.6rem 0.5rem; }
+  .burger-header { flex-direction: column; text-align: center; gap: 0.5rem; }
+}
 </style>
