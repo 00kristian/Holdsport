@@ -99,11 +99,13 @@ const stats = computed(() => [
 .stat-label { font-family: var(--font-cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 0.1rem; }
 
 @media (max-width: 768px) {
-  .hero { min-height: 380px; }
-  .hero-content { padding: 2.5rem 0 2.5rem; }
-  .hero-jersey { font-size: 12rem; opacity: 0.3; right: -1rem; }
-  .hero-actions { flex-direction: column; align-items: flex-start; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero { min-height: unset; }
+  .hero-content { padding: 2.5rem 1.25rem 2.25rem; }
+  .hero-jersey { font-size: 10rem; opacity: 0.15; right: -0.5rem; bottom: -0.5rem; }
+  .hero h1 { font-size: 2.4rem; margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .hero-actions { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
+  .hero-actions .btn { flex: 1; min-width: 130px; justify-content: center; }
   .stat-item { padding: 0.6rem 0.5rem; }
   .stat-num  { font-size: 1.2rem; }
   .stat-label { font-size: 0.6rem; letter-spacing: 0.06em; }
