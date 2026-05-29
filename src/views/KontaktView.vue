@@ -23,10 +23,10 @@
 </template>
 
 <script setup>
-// Replace with real contact details
 const contacts = [
-  { name: 'Træner Navn',    role: 'Cheftræner',       phone: '+45 00 00 00 00', email: 'traener@email.dk' },
-  { name: 'Holdleder Navn', role: 'Holdleder / Admin', phone: '+45 00 00 00 00', email: 'admin@email.dk' },
+  { name: 'William Nistrup', role: 'Cheftræner',                             phone: '41424242',               email: 'william.nistrup@gmail.com' },
+  { name: 'Kristian Berlin', role: 'Assistenttræner / Holdleder / Admin',    phone: '28299303',               email: 'kristianberlin1@hotmail.dk' },
+  { name: 'Oscar Pino',      role: 'Assistenttræner / Senior ansvarlig',     phone: '25480117',               email: 'oscarpino@hotmail.dk' },
 ]
 </script>
 
