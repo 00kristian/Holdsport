@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ishockey Hold — Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:       #001433;
+  --navy2:      #002060;
+  --navy3:      #0a2d6e;
+  --ice:        #d4eaf7;
+  --ice2:       #e8f4fb;
+  --blue:       #1560bd;
+  --blue-light: #3a8fd4;
+  --white:      #f0f4f8;
+  --white-pure: #ffffff;
+  --steel:      #7a9cb8;
+  --muted:      #4a6a88;
+  --border:     #0d2d55;
+  --border2:    #1a3f6e;
+  --red:        #c8304a;
+
+  --font-display: 'Anton', sans-serif;
+  --font-cond:    'Barlow Condensed', sans-serif;
+  --font-body:    'Barlow', sans-serif;
+  --r: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--white);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =============================================
+   BROWSER CHROME
+   ============================================= */
+.chrome {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #060e1a;
+  border-bottom: 1px solid #0d1f35;
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.45rem 1.25rem;
+  font-family: 'Barlow', sans-serif; font-size: 0.72rem; color: #3a5a78;
+}
+.chrome .dots { display: flex; gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+.chrome .url { background: #0a1828; border: 1px solid #0d1f35; border-radius: 4px; padding: 0.2rem 0.75rem; flex: 1; max-width: 300px; }
+.chrome .tag { margin-left: auto; background: #1560bd22; color: #3a8fd4; border: 1px solid #1560bd44; border-radius: 4px; padding: 0.15rem 0.6rem; font-size: 0.68rem; letter-spacing: 0.06em; }
+body { padding-top: 34px; }
+
+/* =============================================
+   NAV
+   ============================================= */
+.nav {
+  position: sticky; top: 34px; z-index: 100;
+  background: var(--navy2);
+  border-bottom: 2px solid var(--blue);
+}
+.nav-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 58px;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem; letter-spacing: 0.1em;
+  color: var(--white-pure); cursor: pointer;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.logo-puck { font-size: 1.1rem; }
+.logo em { color: var(--blue-light); font-style: normal; }
+
+.nav-links { list-style: none; display: flex; align-items: center; gap: 0; }
+.nav-links a {
+  font-family: var(--font-cond);
+  font-size: 0.92rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--steel); text-decoration: none;
+  padding: 0.45rem 0.9rem; border-radius: var(--r);
+  transition: color 0.15s, background 0.15s; cursor: pointer;
+  white-space: nowrap; display: flex; align-items: center; gap: 0.3rem;
+}
+.nav-links a:hover { color: var(--white); background: var(--border2); }
+.nav-links a.active { color: var(--white-pure); }
+.nav-links a.active::after { content: ''; display: block; } /* handled differently */
+
+.nav-dropdown { position: relative; }
+.nav-dropdown-menu {
+  display: none; position: absolute; top: calc(100% + 6px); left: 0;
+  background: var(--navy2); border: 1px solid var(--border2);
+  border-top: 2px solid var(--blue);
+  border-radius: 0 0 var(--r) var(--r);
+  padding: 0.35rem; min-width: 210px;
+  box-shadow: 0 12px 40px #00000080; z-index: 200;
+}
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a { display: block; padding: 0.55rem 0.75rem; border-radius: var(--r); font-size: 0.88rem; }
+.nav-dropdown > a::after { content: ' ▾'; font-size: 0.65rem; opacity: 0.6; }
+
+/* =============================================
+   PAGE SYSTEM
+   ============================================= */
+.page { display: none; animation: fadeUp 0.2s ease; }
+.page.active { display: block; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; } }
+
+/* =============================================
+   SHARED
+   ============================================= */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+.page-wrap { padding: 3rem 0 6rem; }
+
+.page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border2); }
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 0.06em; line-height: 1;
+  color: var(--white-pure); margin-bottom: 0.5rem;
+}
+.page-header .accent-line { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+.page-header .accent-line span { display: block; width: 3rem; height: 3px; background: var(--blue); }
+.page-header p { color: var(--steel); font-size: 1rem; max-width: 520px; }
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  font-family: var(--font-cond); font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.7rem 1.75rem; border-radius: var(--r);
+  border: none; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: all 0.15s;
+}
+.btn-primary { background: var(--blue); color: var(--white-pure); }
+.btn-primary:hover { background: var(--blue-light); }
+.btn-white { background: var(--white-pure); color: var(--navy2); }
+.btn-white:hover { background: var(--ice); }
+.btn-ghost { background: transparent; color: var(--white); border: 1px solid var(--border2); }
+.btn-ghost:hover { border-color: var(--steel); }
+
+/* =============================================
+   HOME — HERO
+   ============================================= */
+.hero {
+  min-height: 500px; position: relative; overflow: hidden;
+  background: var(--navy2);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Ice rink lines as background */
+.hero-rink {
+  position: absolute; inset: 0;
+  background:
+    /* center ice circle */
+    radial-gradient(ellipse 30% 50% at 75% 50%, transparent 49%, #1560bd18 50%, transparent 51%),
+    /* blue line */
+    linear-gradient(90deg, transparent 60%, #1560bd12 60.5%, transparent 61%),
+    /* red center line */
+    linear-gradient(90deg, transparent 49.5%, #c8304a10 50%, transparent 50.5%),
+    /* ice surface */
+    radial-gradient(ellipse 100% 100% at 50% 100%, #002a6010 0%, transparent 60%);
+}
+.hero-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 70% at 20% 60%, #1560bd14 0%, transparent 60%);
+}
+.hero-scratches {
+  position: absolute; inset: 0; opacity: 0.03;
+  background-image: repeating-linear-gradient(
+    92deg, transparent, transparent 2px, #ffffff 2px, #ffffff 3px
+  );
+  background-size: 200px 100%;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1080px; margin: 0 auto; width: 100%;
+  padding: 4rem 2rem 3.5rem;
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: flex-end;
+}
+.hero-left {}
+.hero-number {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 18vw, 13rem);
+  line-height: 0.85; letter-spacing: -0.02em;
+  color: var(--navy3);
+  position: absolute; right: 2rem; top: 50%; transform: translateY(-50%);
+  user-select: none; pointer-events: none;
+}
+.hero-kicker {
+  font-family: var(--font-cond); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--blue-light); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.hero-kicker::before { content: ''; width: 20px; height: 2px; background: var(--blue-light); display: block; }
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  letter-spacing: 0.04em; line-height: 0.9;
+  color: var(--white-pure); margin-bottom: 1.25rem;
+}
+.hero h1 em { color: var(--blue-light); font-style: normal; display: block; }
+.hero-sub { color: var(--steel); font-size: 1rem; max-width: 420px; margin-bottom: 2rem; line-height: 1.5; }
+.hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+/* jersey number decoration */
+.hero-jersey {
+  position: absolute; right: 2rem; bottom: 0;
+  font-family: var(--font-display); font-size: 22rem; line-height: 1;
+  color: var(--navy3); letter-spacing: -0.05em;
+  user-select: none; pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Quick stats strip */
+.stats-strip {
+  background: var(--blue); border-top: none;
+  display: flex;
+}
+.stats-strip .container { display: flex; }
+.stat-item {
+  flex: 1; text-align: center; padding: 0.75rem 1rem;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-display); font-size: 1.5rem;
+  letter-spacing: 0.06em; color: var(--white-pure);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-cond); font-size: 0.68rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); margin-top: 0.1rem;
+}
+
+/* home cards */
+.home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-top: 3rem; }
+.home-card { background: var(--navy2); padding: 1.75rem 1.5rem; cursor: pointer; transition: background 0.15s; }
+.home-card:hover { background: var(--navy3); }
+.home-card-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.home-card h3 { font-family: var(--font-display); font-size: 1.25rem; letter-spacing: 0.06em; color: var(--white-pure); margin-bottom: 0.4rem; }
+.home-card p { font-size: 0.84rem; color: var(--steel); line-height: 1.5; }
+
+/* =============================================
+   NEW PLAYER PAGE
+   ============================================= */
+.steps { margin-top: 2rem; }
+.step { display: grid; grid-template-columns: 64px 1fr; gap: 1.5rem; padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
+.step:last-child { border-bottom: none; }
+.step-num-wrap {
+  display: flex; flex-direction: column; align-items: center; padding-top: 4px;
+}
+.step-num {
+  font-family: var(--font-display); font-size: 2.2rem;
+  color: var(--blue-light); line-height: 1;
+  background: var(--border2); width: 52px; height: 52px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--blue);
+}
+.step-body h3 { font-family: var(--font-cond); font-size: 1.25rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 0.4rem; color: var(--white-pure); }
+.step-body p { color: var(--steel); font-size: 0.9rem; line-height: 1.65; }
+.step-body .chip { display: inline-block; margin-top: 0.75rem; background: var(--border2); border: 1px solid var(--border2); border-radius: 99px; padding: 0.25rem 0.8rem; font-family: var(--font-cond); font-size: 0.78rem; color: var(--blue-light); letter-spacing: 0.06em; }
+
+.info-box { background: var(--navy2); border: 1px solid var(--border2); border-left: 3px solid var(--blue); border-radius: 0 var(--r) var(--r) 0; padding: 1.25rem 1.5rem; margin: 2rem 0; }
+.info-box .label { font-family: var(--font-cond); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue-light); margin-bottom: 0.3rem; }
+.info-box p { font-size: 0.9rem; color: var(--steel); }
+
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q { padding: 1rem 0; cursor: pointer; font-family: var(--font-cond); font-size: 1rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; color: var(--white); }
+.faq-q::after { content: '+'; color: var(--blue-light); font-size: 1.3rem; flex-shrink: 0; font-family: monospace; }
+.faq-a { padding: 0 0 1rem; font-size: 0.9rem; color: var(--steel); line-height: 1.65; }
+
+/* =============================================
+   RULES PAGE
+   ============================================= */
+.rules-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border2); margin-bottom: 2.5rem; }
+.rtab {
+  font-family: var(--font-cond); font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.65rem 1.4rem; cursor: pointer; background: none; border: none;
+  color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.rtab:hover { color: var(--white); }
+.rtab.active { color: var(--white-pure); border-bottom-color: var(--blue); }
+
+.rpanel { display: none; }
+.rpanel.active { display: block; animation: fadeUp 0.2s; }
+
+.rule-list { list-style: none; padding: 0; counter-reset: rc; }
+.rule-item {
+  counter-increment: rc;
+  display: flex; gap: 1.25rem;
+  padding: 1rem 1.25rem; margin-bottom: 0.5rem;
+  background: var(--navy2); border: 1px solid var(--border);
+  border-radius: var(--r); align-items: flex-start;
+  transition: border-color 0.15s;
+}
+.rule-item:hover { border-color: var(--border2); }
+.rnum { font-family: var(--font-display); font-size: 1.4rem; color: var(--blue); min-width: 2.2rem; line-height: 1.2; opacity: 0.8; }
+.rnum::before { content: counter(rc, decimal-leading-zero); }
+.rtext { font-size: 0.9rem; line-height: 1.6; color: var(--steel); }
+.rtext strong { color: var(--white); font-family: var(--font-cond); font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; display: block; margin-bottom: 0.2rem; }
+
+.burger-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding: 1.25rem 1.5rem; background: var(--navy2); border: 1px solid var(--border2); border-radius: var(--r); }
+.burger-header .bicon { font-size: 2rem; }
+.burger-header h3 { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.06em; }
+.burger-header p { font-size: 0.84rem; color: var(--steel); }
+
+/* =============================================
+   TEAM PAGE
+   ============================================= */
+.section-label {
+  font-family: var(--font-cond); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 3rem; }
+.mcard { background: var(--navy2); border: 1px solid var(--border); border-radius: var(--r); padding: 1.25rem 1rem; text-align: center; transition: border-color 0.15s, transform 0.15s; }
+.mcard:hover { border-color: var(--border2); transform: translateY(-2px); }
+.avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--border2); margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--border2); }
+.mname { font-family: var(--font-cond); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.03em; margin-bottom: 0.2rem; color: var(--white); }
+.mrole { font-size: 0.72rem; color: var(--blue-light); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* =============================================
+   CONTACT
+   ============================================= */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+.ccard { background: var(--navy2); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem; }
+.ccard h3 { font-family: var(--font-cond); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 0.2rem; color: var(--white); }
+.crole { font-size: 0.75rem; color: var(--blue-light); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 1rem; }
+.cline { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--steel); margin-top: 0.4rem; }
+.cline a { color: var(--blue-light); text-decoration: none; }
+
+/* =============================================
+   PROGRAM
+   ============================================= */
+.auth-panel { background: var(--navy2); border: 1px solid var(--border); border-radius: var(--r); padding: 2rem; max-width: 420px; margin-bottom: 2rem; }
+.auth-panel h3 { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 0.06em; margin-bottom: 1.25rem; color: var(--white-pure); }
+.field { margin-bottom: 0.75rem; }
+.field label { display: block; font-family: var(--font-cond); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel); margin-bottom: 0.35rem; }
+.field input { width: 100%; background: var(--navy); border: 1px solid var(--border2); border-radius: var(--r); color: var(--white); font-family: var(--font-body); font-size: 0.9rem; padding: 0.6rem 0.9rem; outline: none; }
+.field input:focus { border-color: var(--blue); }
+
+.activity-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 2rem; }
+.acard { display: grid; grid-template-columns: 56px 1fr auto; gap: 1rem; align-items: center; background: var(--navy2); border: 1px solid var(--border); border-radius: var(--r); padding: 1rem 1.25rem; transition: border-color 0.15s; }
+.acard:hover { border-color: var(--border2); }
+.adate { text-align: center; }
+.aday { font-family: var(--font-display); font-size: 1.75rem; line-height: 1; color: var(--blue-light); }
+.amonth { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.aname { font-family: var(--font-cond); font-weight: 700; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 0.25rem; color: var(--white); }
+.ameta { font-size: 0.8rem; color: var(--steel); display: flex; gap: 1rem; flex-wrap: wrap; }
+.badge { font-family: var(--font-cond); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.28rem 0.7rem; border-radius: 99px; white-space: nowrap; }
+.bg { background: #0a2a18; color: #3db87a; border: 1px solid #1a4a28; }
+.by { background: #1a1a08; color: #c8a820; border: 1px solid #3a3410; }
+.bm { background: var(--border); color: var(--muted); border: 1px solid var(--border2); }
+
+/* cors warning */
+.warn { background: #0a1828; border: 1px solid var(--border2); border-left: 2px solid var(--blue); border-radius: 0 var(--r) var(--r) 0; padding: 1rem 1.25rem; margin-top: 1.25rem; font-size: 0.84rem; color: var(--steel); line-height: 1.6; }
+.warn strong { display: block; color: var(--blue-light); font-family: var(--font-cond); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer { background: var(--navy2); border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-family: var(--font-cond); font-size: 0.8rem; letter-spacing: 0.05em; color: var(--muted); text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="chrome">
+  <div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+  <div class="url">https://dithold.github.io</div>
+  <div class="tag">MOCKUP</div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo" onclick="go('home')">🏒 <span>HOLDET<em>.</em></span></div>
+    <ul class="nav-links">
+      <li><a onclick="go('home')" id="n-home" class="active">Forside</a></li>
+      <li><a onclick="go('ny')" id="n-ny">Ny Spiller</a></li>
+      <li class="nav-dropdown">
+        <a id="n-regler">Regler</a>
+        <div class="nav-dropdown-menu">
+          <a onclick="go('regler'); rtab('gen')">Generelle Regler</a>
+          <a onclick="go('regler'); rtab('burger')">🍔 Burger Cup Regler</a>
+        </div>
+      </li>
+      <li><a onclick="go('holdet')" id="n-holdet">Holdet</a></li>
+      <li><a onclick="go('kontakt')" id="n-kontakt">Kontakt</a></li>
+      <li><a onclick="go('program')" id="n-program">Program</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ====== HOME ====== -->
+<div class="page active" id="p-home">
+  <div class="hero">
+    <div class="hero-rink"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-scratches"></div>
+    <div class="hero-jersey">9</div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-kicker">Sæson 2025 / 26</div>
+        <h1>VELKOMMEN<em>TIL HOLDET</em></h1>
+        <p class="hero-sub">Alt hvad du behøver — regler, holdinfo og kontakt på ét sted. Ny spiller? Start her.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="go('ny')">⚡ Ny Spiller</button>
+          <button class="btn btn-ghost" onclick="go('regler')">Læs Regler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stat-item"><div class="stat-num">2025</div><div class="stat-label">Sæson</div></div>
+      <div class="stat-item"><div class="stat-num">18</div><div class="stat-label">Spillere</div></div>
+      <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Trænere</div></div>
+      <div class="stat-item"><div class="stat-num">75%</div><div class="stat-label">Fremmødekrav</div></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="home-grid">
+      <div class="home-card" onclick="go('ny')">
+        <div class="home-card-icon">⚡</div>
+        <h3>Ny Spiller</h3>
+        <p>Ny på holdet? Her er alt du skal vide fra dag 1.</p>
+      </div>
+      <div class="home-card" onclick="go('regler')">
+        <div class="home-card-icon">📋</div>
+        <h3>Regler</h3>
+        <p>Generelle regler og Burger Cup regler.</p>
+      </div>
+      <div class="home-card" onclick="go('holdet')">
+        <div class="home-card-icon">👥</div>
+        <h3>Holdet</h3>
+        <p>Mød spillere, trænere og stab.</p>
+      </div>
+      <div class="home-card" onclick="go('kontakt')">
+        <div class="home-card-icon">📬</div>
+        <h3>Kontakt</h3>
+        <p>Trænere og holdledelse.</p>
+      </div>
+      <div class="home-card" onclick="go('program')">
+        <div class="home-card-icon">📅</div>
+        <h3>Program</h3>
+        <p>Live fra Holdsport API.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== NY SPILLER ====== -->
+<div class="page" id="p-ny">
+  <div class="container page-wrap">
+    <div class="page-header">
+      <div class="accent-line"><span></span></div>
+      <h1>NY SPILLER</h1>
+      <p>Velkommen til holdet! Gå trinene igennem og du er klar på under 5 minutter.</p>
+    </div>
+    <div class="info-box">
+      <div class="label">🏒 Tip</div>
+      <p>Gå trinene igennem i rækkefølge — så er du klar til første træning.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">1</div></div>
+        <div class="step-body">
+          <h3>Download Holdsport</h3>
+          <p>Al kommunikation, tilmelding til træning og kampe foregår via Holdsport-appen. Download den og opret dig med din holdmail.</p>
+          <span class="chip">App Store · Google Play</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">2</div></div>
+        <div class="step-body">
+          <h3>Meld dig til træning</h3>
+          <p>Find den næste træning i appen og meld dig til. Husk altid at melde afbud i god tid hvis du ikke kan komme. Forventet fremmøde: minimum 75%.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">3</div></div>
+        <div class="step-body">
+          <h3>Læs reglerne</h3>
+          <p>Vi har generelle holdregler og Burger Cup regler. Alle forventes at kende begge sæt.</p>
+          <button class="btn btn-ghost" style="margin-top:0.75rem;font-size:0.82rem;padding:0.5rem 1.25rem" onclick="go('regler')">Gå til Regler →</button>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">4</div></div>
+        <div class="step-body">
+          <h3>Udstyr</h3>
+          <p>Du medbringer selv fodboldstøvler og benskinner. Holdtrøjer udleveres af trænerstaben. Mangler der noget — kontakt holdlederen.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"><div class="step-num">5</div></div>
+        <div class="step-body">
+          <h3>Mød holdet</h3>
+          <p>Se hvem der er på holdet og hvem du kan kontakte.</p>
+          <button class="btn btn-ghost" style="margin-top:0.75rem;font-size:0.82rem;padding:0.5rem 1.25rem" onclick="go('holdet')">Se Holdet →</button>
+        </div>
+      </div>
+    </div>
+    <h2 style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.06em;margin:3rem 0 1.25rem;color:var(--white-pure)">FAQ</h2>
+    <div class="faq-item"><div class="faq-q">Hvad sker der hvis jeg ikke kan møde op?</div><div class="faq-a">Meld afbud i Holdsport-appen hurtigst muligt. Gentagne udeblivelser uden afbud kan medføre en snak med holdledelsen.</div></div>
+    <div class="faq-item"><div class="faq-q">Hvad er Burger Cup?</div><div class="faq-a">Holdets interne turnering med egne regler — læs dem under Regler → Burger Cup.</div></div>
+    <div class="faq-item"><div class="faq-q">Hvornår er der træning?</div><div class="faq-a">Tjek Holdsport-appen eller Program-siden her på sitet.</div></div>
+    <div class="faq-item"><div class="faq-q">Hvem kontakter jeg med spørgsmål?</div><div class="faq-a">Se Kontakt-siden. Ved akutte ting, skriv direkte til holdlederen i Holdsport.</div></div>
+  </div>
+</div>
+
+<!-- ====== REGLER ====== -->
+<div class="page" id="p-regler">
+  <div class="container page-wrap">
+    <div class="page-header">
+      <div class="accent-line"><span></span></div>
+      <h1>REGLER</h1>
+      <p>Generelle holdregler og Burger Cup regler.</p>
+    </div>
+    <div class="rules-tabs">
+      <button class="rtab active" id="t-gen" onclick="rtab('gen')">Generelle Regler</button>
+      <button class="rtab" id="t-burger" onclick="rtab('burger')">🍔 Burger Cup</button>
+    </div>
+    <div class="rpanel active" id="rp-gen">
+      <ol class="rule-list">
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Fremmøde</strong>Mød til tiden til træning og kampe. Meld altid afbud via Holdsport. Forventet fremmøde er min. 75% over sæsonen.</div></li>
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Respekt</strong>Respekter holdkammerater, trænere og modstandere — på og uden for banen.</div></li>
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Udstyr</strong>Hold dit udstyr i orden. Kontakt træneren hvis der mangler noget.</div></li>
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Sociale medier</strong>Del ikke billeder eller video af andre uden samtykke.</div></li>
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Kommunikation</strong>Holdets kommunikation foregår primært via Holdsport. Tjek appen jævnligt.</div></li>
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Opførsel</strong>Nultolerance over for diskrimination, mobning eller chikane.</div></li>
+      </ol>
+    </div>
+    <div class="rpanel" id="rp-burger">
+      <div class="burger-header">
+        <div class="bicon">🍔</div>
+        <div><h3>BURGER CUP</h3><p>Holdets interne turnering — egne regler gælder.</p></div>
+      </div>
+      <ol class="rule-list">
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Format</strong>Burger Cup spilles som intern turnering. Format og runder aftales ved sæsonstart.</div></li>
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Tilmelding</strong>Alle spillere er automatisk med. Afmelding senest 48 timer før første runde.</div></li>
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Regler på banen</strong>Normale regler gælder med eventuelle justeringer fra trænerstaben.</div></li>
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Præmie</strong>Vinderen køber burger til resten af holdet. Det er ikke til diskussion.</div></li>
+        <li class="rule-item"><div class="rnum"></div><div class="rtext"><strong>Tvister</strong>Trænerstabens afgørelse er endelig.</div></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ====== HOLDET ====== -->
+<div class="page" id="p-holdet">
+  <div class="container page-wrap">
+    <div class="page-header">
+      <div class="accent-line"><span></span></div>
+      <h1>HOLDET</h1>
+    </div>
+    <div class="section-label">Trænere & Stab</div>
+    <div class="members-grid">
+      <div class="mcard"><div class="avatar">🧑‍🏫</div><div class="mname">Træner Navn</div><div class="mrole">Cheftræner</div></div>
+      <div class="mcard"><div class="avatar">🧑</div><div class="mname">Assistent</div><div class="mrole">Assistenttræner</div></div>
+      <div class="mcard"><div class="avatar">📋</div><div class="mname">Holdleder</div><div class="mrole">Holdleder</div></div>
+    </div>
+    <div class="section-label">Spillertruppen</div>
+    <div class="members-grid">
+      <div class="mcard"><div class="avatar">🏒</div><div class="mname">Spiller 1</div><div class="mrole">Kaptajn</div></div>
+      <div class="mcard"><div class="avatar">🏒</div><div class="mname">Spiller 2</div><div class="mrole">Spiller</div></div>
+      <div class="mcard"><div class="avatar">🏒</div><div class="mname">Spiller 3</div><div class="mrole">Spiller</div></div>
+      <div class="mcard"><div class="avatar">🥅</div><div class="mname">Spiller 4</div><div class="mrole">Keeper</div></div>
+      <div class="mcard"><div class="avatar">🏒</div><div class="mname">Spiller 5</div><div class="mrole">Spiller</div></div>
+      <div class="mcard"><div class="avatar">🏒</div><div class="mname">Spiller 6</div><div class="mrole">Spiller</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== KONTAKT ====== -->
+<div class="page" id="p-kontakt">
+  <div class="container page-wrap">
+    <div class="page-header">
+      <div class="accent-line"><span></span></div>
+      <h1>KONTAKT</h1>
+      <p>Find de rette at kontakte.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="ccard"><h3>Træner Navn</h3><div class="crole">Cheftræner</div><div class="cline">📱 <a href="#">+45 00 00 00 00</a></div><div class="cline">✉️ <a href="#">traener@email.dk</a></div></div>
+      <div class="ccard"><h3>Holdleder Navn</h3><div class="crole">Holdleder / Admin</div><div class="cline">📱 <a href="#">+45 00 00 00 00</a></div><div class="cline">✉️ <a href="#">admin@email.dk</a></div></div>
+    </div>
+    <div class="info-box" style="margin-top:2.5rem">
+      <div class="label">Info</div>
+      <p>Brug primært Holdsport-appen til daglig kommunikation. For praktiske spørgsmål — skriv til holdlederen.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== PROGRAM ====== -->
+<div class="page" id="p-program">
+  <div class="container page-wrap">
+    <div class="page-header">
+      <div class="accent-line"><span></span></div>
+      <h1>PROGRAM</h1>
+      <p>Kommende træning og kampe — live fra Holdsport.</p>
+    </div>
+    <div class="auth-panel">
+      <h3>LOG IND MED HOLDSPORT</h3>
+      <div class="field"><label>Email</label><input type="email" placeholder="din@email.dk"></div>
+      <div class="field"><label>Adgangskode</label><input type="password" placeholder="••••••••"></div>
+      <div class="field"><label>Hold-ID</label><input type="text" placeholder="f.eks. 6237"></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem">Hent Program</button>
+      <div class="warn"><strong>⚠ CORS-begrænsning</strong>Holdsport API'et tillader ikke direkte browserkald. En Cloudflare Worker proxy løser dette (gratis).</div>
+    </div>
+    <div class="activity-list">
+      <div class="acard"><div class="adate"><div class="aday">28</div><div class="amonth">maj</div></div><div><div class="aname">Træning</div><div class="ameta"><span>🕕 18:00</span><span>📍 Ishallen</span><span>👥 12</span></div></div><span class="badge bg">Tilmeldt</span></div>
+      <div class="acard"><div class="adate"><div class="aday">01</div><div class="amonth">jun</div></div><div><div class="aname">Kamp — FC Modstander</div><div class="ameta"><span>🕑 14:00</span><span>📍 Udebane</span><span>👥 9</span></div></div><span class="badge by">Afventer</span></div>
+      <div class="acard"><div class="adate"><div class="aday">04</div><div class="amonth">jun</div></div><div><div class="aname">Træning</div><div class="ameta"><span>🕕 18:00</span><span>📍 Ishallen</span></div></div><span class="badge bm">–</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Holdet — Mockup · Alle sider er klikbare i menuen</div>
+
+<script>
+const pages = ['home','ny','regler','holdet','kontakt','program'];
+function go(id) {
+  pages.forEach(p => {
+    document.getElementById('p-'+p)?.classList.remove('active');
+    document.getElementById('n-'+p)?.classList.remove('active');
+  });
+  document.getElementById('p-'+id).classList.add('active');
+  document.getElementById('n-'+id)?.classList.add('active');
+  if (id === 'regler') document.getElementById('n-regler').classList.add('active');
+  window.scrollTo(0, 0);
+}
+function rtab(tab) {
+  ['gen','burger'].forEach(t => {
+    document.getElementById('t-'+t).classList.remove('active');
+    document.getElementById('rp-'+t).classList.remove('active');
+  });
+  document.getElementById('t-'+tab).classList.add('active');
+  document.getElementById('rp-'+tab).classList.add('active');
+}
+</script>
+</body>
+</html>

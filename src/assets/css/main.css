@@ -1,0 +1,144 @@
+/* ============================================================
+   HOLDET — Global CSS
+   NHL-inspired blue/white hockey design
+   ============================================================ */
+
+:root {
+  --navy:        #001433;
+  --navy2:       #002060;
+  --navy3:       #0a2d6e;
+  --ice:         #d4eaf7;
+  --blue:        #1560bd;
+  --blue-light:  #3a8fd4;
+  --white:       #f0f4f8;
+  --white-pure:  #ffffff;
+  --steel:       #7a9cb8;
+  --muted:       #4a6a88;
+  --border:      #0d2d55;
+  --border2:     #1a3f6e;
+  --green:       #3db87a;
+  --yellow:      #c8a820;
+  --red:         #c8304a;
+
+  --font-display: 'Anton', sans-serif;
+  --font-cond:    'Barlow Condensed', sans-serif;
+  --font-body:    'Barlow', sans-serif;
+
+  --radius:    6px;
+  --radius-sm: 4px;
+  --max-width: 1080px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--white);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ---- Layout ---- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.page-wrap { padding: 3rem 0 6rem; }
+
+/* ---- Page header ---- */
+.page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border2); }
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 0.06em; line-height: 1;
+  color: var(--white-pure); margin-bottom: 0.5rem;
+}
+.accent-line { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+.accent-line span { display: block; width: 3rem; height: 3px; background: var(--blue); }
+.page-header p { color: var(--steel); font-size: 1rem; max-width: 520px; }
+
+/* ---- Buttons ---- */
+.btn {
+  font-family: var(--font-cond);
+  font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.7rem 1.75rem; border-radius: var(--radius-sm);
+  border: none; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: all 0.15s;
+}
+.btn-primary { background: var(--blue); color: var(--white-pure); }
+.btn-primary:hover { background: var(--blue-light); }
+.btn-white { background: var(--white-pure); color: var(--navy2); }
+.btn-white:hover { background: var(--ice); }
+.btn-ghost {
+  background: transparent; color: var(--white);
+  border: 1px solid var(--border2);
+}
+.btn-ghost:hover { border-color: var(--steel); }
+
+/* ---- Cards ---- */
+.card {
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.card:hover { border-color: var(--border2); }
+
+/* ---- Section label ---- */
+.section-label {
+  font-family: var(--font-cond);
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.section-label::after {
+  content: ''; flex: 1;
+  height: 1px; background: var(--border);
+}
+
+/* ---- Info box ---- */
+.info-box {
+  background: var(--navy2);
+  border: 1px solid var(--border2);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.25rem 1.5rem;
+}
+.info-box .label {
+  font-family: var(--font-cond);
+  font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--blue-light); margin-bottom: 0.3rem;
+}
+.info-box p { font-size: 0.9rem; color: var(--steel); }
+
+/* ---- Status badges ---- */
+.badge {
+  font-family: var(--font-cond);
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  padding: 0.28rem 0.7rem; border-radius: 99px; white-space: nowrap;
+}
+.badge-green  { background: #0a2a18; color: var(--green);  border: 1px solid #1a4a28; }
+.badge-yellow { background: #1a1a08; color: var(--yellow); border: 1px solid #3a3410; }
+.badge-muted  { background: var(--border); color: var(--muted); border: 1px solid var(--border2); }
+
+/* ---- Fade-in transition ---- */
+.fade-enter-active, .fade-leave-active { transition: opacity 0.2s, transform 0.2s; }
+.fade-enter-from { opacity: 0; transform: translateY(8px); }
+.fade-leave-to   { opacity: 0; }
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .container { padding: 0 1.25rem; }
+  .page-wrap  { padding: 2rem 0 4rem; }
+}
