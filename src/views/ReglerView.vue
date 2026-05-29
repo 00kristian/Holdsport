@@ -32,7 +32,7 @@
           <div class="burger-icon">🍔</div>
           <div>
             <h3>BURGER CUP</h3>
-            <p>Holdets interne turnering — egne regler gælder.</p>
+            <p>Holdets vigtigste event — sæsonens højdepunkt.</p>
           </div>
         </div>
         <ol class="rule-list">
@@ -60,11 +60,50 @@ const generelleRegler = [
 ]
 
 const burgerRegler = [
-  { title: 'Format',     description: 'Burger Cup spilles som intern turnering. Format og runder aftales ved sæsonstart.' },
-  { title: 'Tilmelding', description: 'Alle spillere er automatisk med. Afmelding senest 48 timer før første runde.' },
-  { title: 'Regler',     description: 'Normale regler med eventuelle justeringer fra trænerstaben.' },
-  { title: 'Præmie',     description: 'Vinderen køber burger til resten af holdet. Det er ikke til diskussion.' },
-  { title: 'Tvister',    description: 'Trænerstabens afgørelse er endelig.' },
+  {
+    title: 'Deltagelse',
+    description: 'Burger Cup er sæsonens primære event og prioriteres højt af holdet. Spillere der ikke har været faste og aktive deltagere gennem sæsonen, kan ikke forvente at have ret til at deltage. Dette er til forhandling, men udgangspunktet er klart: vil du med i cuppen, skal du vise op til træning og kampe.',
+  },
+  {
+    title: 'Holdsammensætning',
+    description: 'Hold dannes ud fra spillernes nationaliteter. Hvis et hold ikke kan stille med en fuld linje, kan spillere med dobbelt nationalitet blive bedt om at spille for det andet hold og yde deres bedste.',
+  },
+  {
+    title: 'Holdkaptajner',
+    description: 'Der udpeges én kaptajn per hold. Kaptajnerne kan indbyrdes drøfte og løse eventuelle uenigheder.',
+  },
+  {
+    title: 'Kampprogram',
+    description: 'Kampe spilles mandag. Opvarmning 21.00–21.10. Puck drop 21.15. Første halvleg 21.15–21.50. 5 minutters pause. Anden halvleg 21.55–22.30.',
+  },
+  {
+    title: 'Serieformat',
+    description: 'Best of 7.',
+  },
+  {
+    title: 'Keepere',
+    description: 'Hvis der ikke er to keepere til rådighed, aflyses kampen.',
+  },
+  {
+    title: 'Dommer',
+    description: 'En dommer leder kampen.',
+  },
+  {
+    title: 'Straffe',
+    description: '3 minutters løbende tid — eller 2 minutters stoppetid hvis vi har en i tidtagerboxen.',
+  },
+  {
+    title: 'Overtid',
+    description: 'Ved uafgjort spilles der videre 5 mod 5 med golden goal.',
+  },
+  {
+    title: 'Deltagergebyr',
+    description: '50 DKK per spiller (dækker øl og burgere). Mobile Pay-box sendes rundt.',
+  },
+  {
+    title: 'Sommerfest',
+    description: 'Det tabende hold bruger gebyrkassen til at betale for burgere til sommerfesten.',
+  },
 ]
 </script>
 
