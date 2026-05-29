@@ -8,12 +8,12 @@
       <div class="hero-jersey">9</div>
       <div class="hero-content container">
         <div class="hero-left">
-          <div class="hero-kicker">Sæson 2025 / 26</div>
-          <h1>VELKOMMEN<em>TIL HOLDET</em></h1>
-          <p class="hero-sub">Alt hvad du behøver — regler, holdinfo og kontakt på ét sted. Ny spiller? Start her.</p>
+          <div class="hero-kicker">{{ t('home.kicker') }}</div>
+          <h1>{{ t('home.h1') }}<em>{{ t('home.h1em') }}</em></h1>
+          <p class="hero-sub">{{ t('home.sub') }}</p>
           <div class="hero-actions">
-            <RouterLink to="/ny-spiller" class="btn btn-primary">⚡ Ny Spiller</RouterLink>
-            <RouterLink to="/regler"     class="btn btn-ghost">Læs Regler</RouterLink>
+            <RouterLink to="/ny-spiller" class="btn btn-primary">{{ t('home.btnNewPlayer') }}</RouterLink>
+            <RouterLink to="/regler"     class="btn btn-ghost">{{ t('home.btnRules') }}</RouterLink>
           </div>
         </div>
       </div>
@@ -29,34 +29,42 @@
       </div>
     </div>
 
-    <!-- Nav cards -->
-    <div class="container">
-      <div class="home-grid">
-        <RouterLink v-for="card in cards" :key="card.to" :to="card.to" class="home-card">
-          <div class="card-icon">{{ card.icon }}</div>
-          <h3>{{ card.title }}</h3>
-          <p>{{ card.description }}</p>
+    <!-- Quick links -->
+    <div class="container quick-links">
+      <div class="section-label" style="margin-top: 2rem">{{ t('home.quickLabel') }}</div>
+      <nav class="link-list">
+        <RouterLink v-for="link in quickLinks" :key="link.to" :to="link.to" class="link-row">
+          <span class="link-icon">{{ link.icon }}</span>
+          <span class="link-body">
+            <span class="link-title">{{ link.title }}</span>
+            <span class="link-desc">{{ link.desc }}</span>
+          </span>
+          <span class="link-arrow">›</span>
         </RouterLink>
-      </div>
+      </nav>
     </div>
   </main>
 </template>
 
 <script setup>
-const stats = [
-  { value: '2025', label: 'Sæson' },
-  { value: '18',   label: 'Spillere' },
-  { value: '2',    label: 'Trænere' },
-  { value: '75%',  label: 'Fremmødekrav' },
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-const cards = [
-  { to: '/ny-spiller', icon: '⚡', title: 'Ny Spiller',  description: 'Ny på holdet? Her er alt du skal vide fra dag 1.' },
-  { to: '/regler',     icon: '📋', title: 'Regler',      description: 'Generelle regler og Burger Cup regler.' },
-  { to: '/holdet',     icon: '👥', title: 'Holdet',      description: 'Mød spillere, trænere og stab.' },
-  { to: '/kontakt',    icon: '📬', title: 'Kontakt',     description: 'Trænere og holdledelse.' },
-  { to: '/program',    icon: '📅', title: 'Program',     description: 'Live fra Holdsport API.' },
-]
+const { t } = useI18n()
+
+const stats = computed(() => [
+  { value: '26/27', label: t('home.statSeason') },
+  { value: '31',    label: t('home.statPlayers') },
+  { value: '3',     label: t('home.statCoaches') },
+])
+
+const quickLinks = computed(() => [
+  { to: '/ny-spiller', icon: '⚡', title: t('home.ql.newPlayer.title'), desc: t('home.ql.newPlayer.desc') },
+  { to: '/regler',     icon: '📋', title: t('home.ql.rules.title'),     desc: t('home.ql.rules.desc') },
+  { to: '/holdet',     icon: '👥', title: t('home.ql.team.title'),      desc: t('home.ql.team.desc') },
+  { to: '/kontakt',    icon: '📬', title: t('home.ql.contact.title'),   desc: t('home.ql.contact.desc') },
+  { to: '/program',    icon: '📅', title: t('home.ql.schedule.title'),  desc: t('home.ql.schedule.desc') },
+])
 </script>
 
 <style scoped>
@@ -102,7 +110,7 @@ const cards = [
   letter-spacing: 0.04em; line-height: 0.9;
   color: var(--white-pure); margin-bottom: 1.25rem;
 }
-.hero h1 em { color: var(--blue-light); font-style: normal; display: block; }
+.hero h1 em { color: var(--blue-light); font-style: normal; display: block; margin-top: 0.15em; }
 .hero-sub { color: var(--steel); font-size: 1rem; max-width: 420px; margin-bottom: 2rem; line-height: 1.5; }
 .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
@@ -113,10 +121,38 @@ const cards = [
 .stat-num { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.06em; color: var(--white-pure); line-height: 1; }
 .stat-label { font-family: var(--font-cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 0.1rem; }
 
-.home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 3rem; }
-.home-card { background: var(--navy2); padding: 1.75rem 1.5rem; text-decoration: none; color: var(--white); transition: background 0.15s; display: block; }
-.home-card:hover { background: var(--navy3); }
-.card-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
-.home-card h3 { font-family: var(--font-display); font-size: 1.25rem; letter-spacing: 0.06em; color: var(--white-pure); margin-bottom: 0.4rem; }
-.home-card p  { font-size: 0.84rem; color: var(--steel); line-height: 1.5; }
+/* Quick links */
+.quick-links { padding-bottom: 3rem; }
+.link-list { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.link-row {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.25rem;
+  text-decoration: none; color: var(--white);
+  background: var(--navy2);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.link-row:last-child { border-bottom: none; }
+.link-row:hover { background: var(--navy3); }
+.link-icon { font-size: 1.25rem; flex-shrink: 0; width: 2rem; text-align: center; }
+.link-body { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.link-title {
+  font-family: var(--font-cond); font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--white-pure);
+}
+.link-desc { font-size: 0.8rem; color: var(--steel); margin-top: 0.1rem; }
+.link-arrow { font-size: 1.4rem; color: var(--blue-light); flex-shrink: 0; line-height: 1; }
+
+@media (max-width: 768px) {
+  .hero { min-height: unset; }
+  .hero-content { padding: 2.5rem 1.25rem 2.25rem; }
+  .hero-jersey { font-size: 10rem; opacity: 0.15; right: -0.5rem; bottom: -0.5rem; }
+  .hero h1 { font-size: 2.4rem; margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .hero-actions { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
+  .hero-actions .btn { flex: 1; min-width: 130px; justify-content: center; }
+  .stat-item { padding: 0.6rem 0.5rem; }
+  .stat-num  { font-size: 1.2rem; }
+  .stat-label { font-size: 0.6rem; letter-spacing: 0.06em; }
+}
 </style>

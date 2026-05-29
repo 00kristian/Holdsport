@@ -2,8 +2,8 @@
   <main class="container page-wrap">
     <div class="page-header">
       <div class="accent-line"><span></span></div>
-      <h1>REGLER</h1>
-      <p>Generelle holdregler og Burger Cup regler.</p>
+      <h1>{{ t('rules.title') }}</h1>
+      <p>{{ t('rules.subtitle') }}</p>
     </div>
 
     <!-- Tab navigation -->
@@ -11,18 +11,18 @@
       <button
         :class="['rtab', { active: reglerStore.activeTab === 'generelle' }]"
         @click="reglerStore.setTab('generelle')"
-      >Generelle Regler</button>
+      >{{ t('rules.tabGeneral') }}</button>
       <button
         :class="['rtab', { active: reglerStore.activeTab === 'burger' }]"
         @click="reglerStore.setTab('burger')"
-      >🍔 Burger Cup</button>
+      >{{ t('rules.tabBurger') }}</button>
     </div>
 
-    <!-- Generelle Regler -->
+    <!-- General Rules -->
     <Transition name="fade" mode="out-in">
       <div v-if="reglerStore.activeTab === 'generelle'" key="generelle">
         <ol class="rule-list">
-          <RuleCard v-for="(rule, i) in generelleRegler" :key="rule.title" :number="i + 1" :title="rule.title" :description="rule.description" />
+          <RuleCard v-for="(rule, i) in generalRules" :key="rule.title" :number="i + 1" :title="rule.title" :description="rule.description" />
         </ol>
       </div>
 
@@ -32,11 +32,11 @@
           <div class="burger-icon">🍔</div>
           <div>
             <h3>BURGER CUP</h3>
-            <p>Holdets interne turnering — egne regler gælder.</p>
+            <p>{{ t('rules.burgerSubtitle') }}</p>
           </div>
         </div>
         <ol class="rule-list">
-          <RuleCard v-for="(rule, i) in burgerRegler" :key="rule.title" :number="i + 1" :title="rule.title" :description="rule.description" />
+          <RuleCard v-for="(rule, i) in burgerRules" :key="rule.title" :number="i + 1" :title="rule.title" :description="rule.description" />
         </ol>
       </div>
     </Transition>
@@ -44,28 +44,16 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useReglerStore } from '../stores/regler.js'
 import RuleCard from '../components/RuleCard.vue'
 
-// Reading from Pinia store — tab state persists even if you navigate away and back
+const { t, messages, locale } = useI18n()
 const reglerStore = useReglerStore()
 
-const generelleRegler = [
-  { title: 'Fremmøde',        description: 'Mød til tiden til træning og kampe. Meld altid afbud via Holdsport. Forventet fremmøde er min. 75% over sæsonen.' },
-  { title: 'Respekt',         description: 'Respekter holdkammerater, trænere og modstandere — på og uden for banen.' },
-  { title: 'Udstyr',          description: 'Hold dit udstyr i orden. Kontakt træneren hvis der mangler noget.' },
-  { title: 'Sociale medier',  description: 'Del ikke billeder eller video af andre uden samtykke.' },
-  { title: 'Kommunikation',   description: 'Holdets kommunikation foregår primært via Holdsport. Tjek appen jævnligt.' },
-  { title: 'Opførsel',        description: 'Nultolerance over for diskrimination, mobning eller chikane.' },
-]
-
-const burgerRegler = [
-  { title: 'Format',     description: 'Burger Cup spilles som intern turnering. Format og runder aftales ved sæsonstart.' },
-  { title: 'Tilmelding', description: 'Alle spillere er automatisk med. Afmelding senest 48 timer før første runde.' },
-  { title: 'Regler',     description: 'Normale regler med eventuelle justeringer fra trænerstaben.' },
-  { title: 'Præmie',     description: 'Vinderen køber burger til resten af holdet. Det er ikke til diskussion.' },
-  { title: 'Tvister',    description: 'Trænerstabens afgørelse er endelig.' },
-]
+const generalRules = computed(() => messages.value[locale.value].rules.general)
+const burgerRules  = computed(() => messages.value[locale.value].rules.burger)
 </script>
 
 <style scoped>
@@ -78,4 +66,10 @@ const burgerRegler = [
 .burger-icon { font-size: 2rem; }
 .burger-header h3 { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.06em; color: var(--white-pure); }
 .burger-header p { font-size: 0.84rem; color: var(--steel); }
+
+@media (max-width: 480px) {
+  .rules-tabs { flex-wrap: wrap; }
+  .rtab { flex: 1; text-align: center; font-size: 0.82rem; padding: 0.6rem 0.5rem; }
+  .burger-header { flex-direction: column; text-align: center; gap: 0.5rem; }
+}
 </style>

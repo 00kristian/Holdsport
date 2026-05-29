@@ -2,8 +2,8 @@
   <main class="container page-wrap">
     <div class="page-header">
       <div class="accent-line"><span></span></div>
-      <h1>KONTAKT</h1>
-      <p>Find de rette at kontakte.</p>
+      <h1>{{ t('contact.title') }}</h1>
+      <p>{{ t('contact.subtitle') }}</p>
     </div>
 
     <div class="contact-grid">
@@ -16,18 +16,23 @@
     </div>
 
     <div class="info-box" style="margin-top: 2.5rem">
-      <div class="label">Info</div>
-      <p>Brug primært Holdsport-appen til daglig kommunikation. For praktiske spørgsmål — skriv til holdlederen.</p>
+      <div class="label">{{ t('contact.infoLabel') }}</div>
+      <p>{{ t('contact.infoText') }}</p>
     </div>
   </main>
 </template>
 
 <script setup>
-// Replace with real contact details
-const contacts = [
-  { name: 'Træner Navn',    role: 'Cheftræner',       phone: '+45 00 00 00 00', email: 'traener@email.dk' },
-  { name: 'Holdleder Navn', role: 'Holdleder / Admin', phone: '+45 00 00 00 00', email: 'admin@email.dk' },
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const contacts = computed(() => [
+  { name: 'William Nistrup', role: t('contact.roles.headCoach'),       phone: '41424242', email: 'william.nistrup@gmail.com' },
+  { name: 'Kristian Berlin', role: t('contact.roles.assistantAdmin'),  phone: '28299303', email: 'kristianberlin1@hotmail.dk' },
+  { name: 'Oscar Pino',      role: t('contact.roles.assistantSenior'), phone: '25480117', email: 'oscarpino@hotmail.dk' },
+])
 </script>
 
 <style scoped>
@@ -38,4 +43,8 @@ const contacts = [
 .contact-line { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--steel); margin-top: 0.4rem; }
 .contact-line a { color: var(--blue-light); text-decoration: none; }
 .contact-line a:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
 </style>
