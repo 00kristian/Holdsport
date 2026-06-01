@@ -19,6 +19,10 @@ export default {
     statSeason: 'Season',
     statPlayers: 'Players',
     statCoaches: 'Coaches',
+    nextUp: {
+      label: 'Next up',
+      empty: 'No upcoming activities — see the schedule',
+    },
     quickLabel: 'Quick access',
     ql: {
       newPlayer: { title: 'New Player', desc: 'New to the team? Start here.' },

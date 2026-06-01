@@ -29,6 +29,15 @@
       </div>
     </div>
 
+    <!-- Next up -->
+    <div class="container next-up">
+      <div class="section-label" style="margin-top: 2rem">{{ t('home.nextUp.label') }}</div>
+      <RouterLink v-if="nextUp" to="/program" class="next-up-link">
+        <ActivityCard :activity="nextUp" />
+      </RouterLink>
+      <RouterLink v-else to="/program" class="next-up-empty">{{ t('home.nextUp.empty') }}</RouterLink>
+    </div>
+
     <!-- Quick links -->
     <div class="container quick-links">
       <div class="section-label" style="margin-top: 2rem">{{ t('home.quickLabel') }}</div>
@@ -51,10 +60,19 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { currentSeason } from '../utils/season.js'
 import roster from '../data/roster.json'
+import program from '../data/program.json'
+import ActivityCard from '../components/ActivityCard.vue'
 
 const { t } = useI18n()
 
 const season = currentSeason()
+
+// The next activity that hasn't finished yet — mirrors ProgramView's filter,
+// then takes the soonest one. Events in program.json are already sorted by start.
+const nextUp = computed(() => {
+  const now = Date.now()
+  return program.events.find((e) => !e.end || new Date(e.end).getTime() >= now) || null
+})
 
 const stats = computed(() => [
   { value: season,                          label: t('home.statSeason') },
@@ -124,6 +142,16 @@ const quickLinks = computed(() => [
 .stat-item:last-child { border-right: none; }
 .stat-num { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.06em; color: var(--white-pure); line-height: 1; }
 .stat-label { font-family: var(--font-cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 0.1rem; }
+
+/* Next up */
+.next-up-link { display: block; text-decoration: none; }
+.next-up-link :deep(.activity-card) { cursor: pointer; }
+.next-up-empty {
+  display: block; text-decoration: none;
+  background: var(--navy2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1rem 1.25rem; color: var(--muted); font-size: 0.9rem;
+}
+.next-up-empty:hover { border-color: var(--border2); }
 
 /* Quick links */
 .quick-links { padding-bottom: 3rem; }

@@ -18,6 +18,10 @@ export default {
     btnRules: 'Læs Regler',
     statSeason: 'Sæson',
     statPlayers: 'Spillere',
+    nextUp: {
+      label: 'Næste op',
+      empty: 'Ingen kommende aktiviteter — se programmet',
+    },
     quickLabel: 'Hurtig adgang',
     ql: {
       newPlayer: { title: 'Ny Spiller',  desc: 'Ny på holdet? Start her.' },
