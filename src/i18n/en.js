@@ -37,12 +37,12 @@ export default {
   newPlayer: {
     title: 'NEW PLAYER',
     subtitle: 'Everyone’s welcome — but always write to us first.',
-    intro: "Welcome — all new players are welcome, and we can't wait to hear from you! First and most important: always write to us before you show up — we really don't want anyone turning up unannounced. If you've never played ice hockey before, or it's been a long time, a recreational (motions) league might be a better place to start; reach out and we'll advise you honestly. The team uses Holdsport for all communication and sign-ups, and as a new player you get a free trial month.",
+    intro: "Welcome — all new players are welcome, and we can't wait to hear from you! First and most important: always write to us before you show up. If you've never played ice hockey before, or it's been a long time, a recreational (motions) league might be a better place to start; reach out and we'll advise you honestly. The team uses Holdsport for all communication and sign-ups, and as a new player you get a free trial month.",
     pricingLabel: '💳 Price',
     pricing: 'Your first month is free. After that it’s 3,000 kr. per season.',
     faqHeading: 'FAQ',
     steps: [
-      { title: 'Write to us first', description: "The most important step. Contact one of the coaches via the Contact page before you show up — we really don't want anyone turning up unannounced. Tell us your name, a bit about yourself and your experience level.", linkLabel: 'Go to Contact', linkTo: '/kontakt' },
+      { title: 'Write to us first', description: 'The most important step. Contact one of the coaches via the Contact page before you show up. Tell us your name, a bit about yourself and your experience level.', linkLabel: 'Go to Contact', linkTo: '/kontakt' },
       { title: 'We’ll get back to you', description: "We'll reply and guide you on the next steps — including sending an email to froejdis.ksf@gmail.com so we can get you properly registered." },
       { title: 'Set up your Holdsport account', description: 'You’ll then get an email from Holdsport. Follow the link in it and create your account — that puts you on the team in the system.' },
       { title: 'Join a training session', description: 'Once you’ve heard from us and you’re set, sign up for the next training via Holdsport and come along. Always cancel in good time if you can’t make it. See you on the ice!', chip: 'Expected attendance: min. 75%' },

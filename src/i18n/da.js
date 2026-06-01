@@ -37,12 +37,12 @@ export default {
   newPlayer: {
     title: 'NY SPILLER',
     subtitle: 'Alle er velkomne — men skriv altid til os først.',
-    intro: 'Velkommen — alle nye spillere er velkomne, og vi glæder os til at høre fra dig! Det vigtigste først: skriv altid til os, før du møder op — vi vil nødig have, at nogen dukker uanmeldt op. Har du aldrig spillet ishockey før, eller er det længe siden, kan en motionsliga måske være et bedre sted at starte; skriv til os, så rådgiver vi dig ærligt. Holdet bruger Holdsport til al kommunikation og tilmelding, og som ny får du en gratis prøvemåned.',
+    intro: 'Velkommen — alle nye spillere er velkomne, og vi glæder os til at høre fra dig! Det vigtigste først: skriv altid til os, før du møder op. Har du aldrig spillet ishockey før, eller er det længe siden, kan en motionsliga måske være et bedre sted at starte; skriv til os, så rådgiver vi dig ærligt. Holdet bruger Holdsport til al kommunikation og tilmelding, og som ny får du en gratis prøvemåned.',
     pricingLabel: '💳 Pris',
     pricing: 'Din første måned er gratis. Derefter koster det 3.000 kr. pr. sæson.',
     faqHeading: 'FAQ',
     steps: [
-      { title: 'Skriv til os først', description: 'Det vigtigste skridt. Kontakt en af trænerne via Kontakt-siden, før du møder op — vi vil nødig have, at nogen dukker uanmeldt op. Fortæl os dit navn, lidt om dig selv og dit erfaringsniveau.', linkLabel: 'Gå til Kontakt', linkTo: '/kontakt' },
+      { title: 'Skriv til os først', description: 'Det vigtigste skridt. Kontakt en af trænerne via Kontakt-siden, før du møder op. Fortæl os dit navn, lidt om dig selv og dit erfaringsniveau.', linkLabel: 'Gå til Kontakt', linkTo: '/kontakt' },
       { title: 'Vi vender tilbage', description: 'Vi svarer dig og guider dig videre — herunder at du sender en mail til froejdis.ksf@gmail.com, så vi får dig registreret korrekt.' },
       { title: 'Opret din Holdsport-konto', description: 'Du modtager herefter en email fra Holdsport. Følg linket i mailen og opret din konto — så er du på holdet i systemet.' },
       { title: 'Mød op til træning', description: 'Når du har hørt fra os og er klar, så tilmeld dig den næste træning via Holdsport og mød op. Husk altid at melde afbud i god tid hvis du ikke kan. Vi ses på isen!', chip: 'Forventet fremmøde: min. 75%' },
