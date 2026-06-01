@@ -8,6 +8,7 @@ export default {
     team: 'Holdet',
     contact: 'Kontakt',
     schedule: 'Program',
+    leaderboard: '🏆 Fremmøde',
   },
   home: {
     kicker: 'Sæson {season}',
@@ -108,6 +109,17 @@ export default {
     subtitle: 'Kommende træning og kampe — direkte fra Holdsport.',
     empty: 'Ingen kommende aktiviteter fundet.',
     updated: 'Opdateret',
+  },
+  leaderboard: {
+    title: 'FREMMØDE',
+    subtitle: 'Sæsonens mød-op-konge — rangeret efter tilmeldte aktiviteter.',
+    basis: 'Tæller tilmeldinger ("Tilmeldt") — ikke verificeret fremmøde.',
+    window: 'Sæson siden {date} · {count} aktiviteter talt',
+    top5: 'Top 5',
+    fullList: 'Hele holdet',
+    activitiesShort: 'aktiviteter',
+    updated: 'Opdateret',
+    empty: 'Ingen data endnu.',
   },
   activity: {
     fallbackName: 'Aktivitet',

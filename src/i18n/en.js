@@ -8,6 +8,7 @@ export default {
     team: 'The Team',
     contact: 'Contact',
     schedule: 'Schedule',
+    leaderboard: '🏆 Attendance',
   },
   home: {
     kicker: 'Season {season}',
@@ -108,6 +109,17 @@ export default {
     subtitle: 'Upcoming training and games — straight from Holdsport.',
     empty: 'No upcoming activities found.',
     updated: 'Updated',
+  },
+  leaderboard: {
+    title: 'ATTENDANCE',
+    subtitle: "The season's turnout king — ranked by activities signed up for.",
+    basis: 'Counts RSVPs ("Tilmeldt") — not verified attendance.',
+    window: 'Season since {date} · {count} activities counted',
+    top5: 'Top 5',
+    fullList: 'Whole squad',
+    activitiesShort: 'activities',
+    updated: 'Updated',
+    empty: 'No data yet.',
   },
   activity: {
     fallbackName: 'Activity',
