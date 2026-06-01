@@ -5,8 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    # Daily rebuild so the Program page stays current. 06:00 UTC ≈ 08:00 CEST.
-    - cron: '0 6 * * *'
+    # Rebuild every two hours so the Program page (and attendee counts) stay
+    # current without a manual deploy.
+    - cron: '0 */2 * * *'
 
 permissions:
   contents: read

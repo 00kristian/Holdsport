@@ -107,7 +107,10 @@ export default {
     title: 'SCHEDULE',
     subtitle: 'Upcoming training and games — straight from Holdsport.',
     empty: 'No upcoming activities found.',
+    loading: 'Loading schedule …',
+    error: "Couldn't load the schedule right now. Please try again later.",
     updated: 'Updated',
+    stale: 'may be out of date',
   },
   activity: {
     fallbackName: 'Activity',

@@ -107,7 +107,10 @@ export default {
     title: 'PROGRAM',
     subtitle: 'Kommende træning og kampe — direkte fra Holdsport.',
     empty: 'Ingen kommende aktiviteter fundet.',
+    loading: 'Henter program …',
+    error: 'Kunne ikke hente programmet lige nu. Prøv igen senere.',
     updated: 'Opdateret',
+    stale: 'kan være forældet',
   },
   activity: {
     fallbackName: 'Aktivitet',
