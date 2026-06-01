@@ -8,6 +8,7 @@ export default {
     team: 'Holdet',
     contact: 'Kontakt',
     schedule: 'Program',
+    burgerCup: '🍔 Burger Cup',
   },
   home: {
     kicker: 'Sæson {season}',
@@ -108,6 +109,20 @@ export default {
     subtitle: 'Kommende træning og kampe — direkte fra Holdsport.',
     empty: 'Ingen kommende aktiviteter fundet.',
     updated: 'Opdateret',
+  },
+  burger: {
+    title: 'BURGER CUP',
+    subtitle: 'Sæsonens højdepunkt — Danmark mod Resten af Verden i best of 7.',
+    allTime: 'Stillingen gennem tiden',
+    seriesCaption: 'Serietitler vundet i alt',
+    reigning: 'Forsvarende mestre',
+    history: 'Tidligere udgaver',
+    won: 'vandt',
+    rulesLink: 'Se Burger Cup-reglerne',
+    teams: {
+      dk: 'Danmark',
+      row: 'Resten af Verden',
+    },
   },
   activity: {
     fallbackName: 'Aktivitet',

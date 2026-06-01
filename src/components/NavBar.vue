@@ -30,6 +30,7 @@
         <li><RouterLink to="/holdet">{{ t('nav.team') }}</RouterLink></li>
         <li><RouterLink to="/kontakt">{{ t('nav.contact') }}</RouterLink></li>
         <li><RouterLink to="/program">{{ t('nav.schedule') }}</RouterLink></li>
+        <li><RouterLink to="/burger-cup">{{ t('nav.burgerCup') }}</RouterLink></li>
       </ul>
 
       <!-- Right side: lang switcher + hamburger -->
@@ -57,6 +58,7 @@
           <li><RouterLink to="/holdet"  @click="menuOpen = false">{{ t('nav.team') }}</RouterLink></li>
           <li><RouterLink to="/kontakt" @click="menuOpen = false">{{ t('nav.contact') }}</RouterLink></li>
           <li><RouterLink to="/program" @click="menuOpen = false">{{ t('nav.schedule') }}</RouterLink></li>
+          <li><RouterLink to="/burger-cup" @click="menuOpen = false">{{ t('nav.burgerCup') }}</RouterLink></li>
         </ul>
         <div class="mobile-lang">
           <button :class="['mobile-lang-btn', { active: locale === 'da' }]" @click="setLocale('da'); menuOpen = false">🇩🇰 Dansk</button>
