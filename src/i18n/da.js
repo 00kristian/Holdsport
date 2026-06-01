@@ -36,7 +36,7 @@ export default {
   },
   newPlayer: {
     title: 'NY SPILLER',
-    subtitle: 'Alle er velkomne — men skriv altid til os først.',
+    subtitle: 'Velkommen til holdet — sådan kommer du i gang.',
     intro: 'Velkommen — alle nye spillere er velkomne, og vi glæder os til at høre fra dig! Det vigtigste først: skriv altid til os, før du møder op. Har du aldrig spillet ishockey før, eller er det længe siden, kan en motionsliga måske være et bedre sted at starte; skriv til os, så rådgiver vi dig ærligt. Holdet bruger Holdsport til al kommunikation og tilmelding, og som ny får du en gratis prøvemåned.',
     pricingLabel: '💳 Pris',
     pricing: 'Din første måned er gratis. Derefter koster det 3.000 kr. pr. sæson.',
@@ -48,7 +48,7 @@ export default {
       { title: 'Mød op til træning', description: 'Når du har hørt fra os og er klar, så tilmeld dig den næste træning via Holdsport og mød op. Husk altid at melde afbud i god tid hvis du ikke kan. Vi ses på isen!', chip: 'Forventet fremmøde: min. 75%' },
     ],
     faq: [
-      { q: 'Kan jeg bare møde op til en træning?', a: 'Nej — skriv altid til os først. Vi vil gerne vide, at du kommer, så vi kan tage ordentligt imod dig. Mød aldrig bare op uanmeldt.' },
+      { q: 'Kan jeg bare møde op til en træning?', a: 'Nej — kontakt os, før du kommer. Vi vil gerne vide, at du er på vej, så vi kan tage ordentligt imod dig.' },
       { q: 'Hvad koster det at være med?', a: 'Din første måned er gratis. Derefter er prisen 3.000 kr. pr. sæson.' },
       { q: 'Skal jeg have erfaring for at være med?', a: 'Skriv dit erfaringsniveau til træneren, så finder vi ud af det sammen — fortæl bare ærligt hvor du står. Har du aldrig spillet ishockey før, findes der en række motionsligaer, som vi måske vil anbefale dig at starte i, før du slutter dig til os.' },
       { q: 'Hvad sker der hvis jeg ikke kan møde op?', a: 'Meld afbud i Holdsport-appen hurtigst muligt. Gentagne udeblivelser uden afbud kan medføre en snak med holdledelsen.' },

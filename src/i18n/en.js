@@ -36,7 +36,7 @@ export default {
   },
   newPlayer: {
     title: 'NEW PLAYER',
-    subtitle: 'Everyone’s welcome — but always write to us first.',
+    subtitle: 'Welcome to the team — here’s how to get started.',
     intro: "Welcome — all new players are welcome, and we can't wait to hear from you! First and most important: always write to us before you show up. If you've never played ice hockey before, or it's been a long time, a recreational (motions) league might be a better place to start; reach out and we'll advise you honestly. The team uses Holdsport for all communication and sign-ups, and as a new player you get a free trial month.",
     pricingLabel: '💳 Price',
     pricing: 'Your first month is free. After that it’s 3,000 kr. per season.',
@@ -48,7 +48,7 @@ export default {
       { title: 'Join a training session', description: 'Once you’ve heard from us and you’re set, sign up for the next training via Holdsport and come along. Always cancel in good time if you can’t make it. See you on the ice!', chip: 'Expected attendance: min. 75%' },
     ],
     faq: [
-      { q: 'Can I just show up to a training?', a: "No — always write to us first. We want to know you're coming so we can welcome you properly. Please don't show up unannounced." },
+      { q: 'Can I just show up to a training?', a: "No — get in touch before you come. We want to know you're on your way so we can welcome you properly." },
       { q: 'What does it cost to join?', a: 'Your first month is free. After that the price is 3,000 kr. per season.' },
       { q: 'Do I need experience to join?', a: 'Tell the coach your level of experience and we’ll figure it out together — just be honest about where you are. If you’ve never played ice hockey before, there are numerous recreational (motions) leagues we might recommend you start in before joining us.' },
       { q: "What happens if I can't make it?", a: 'Cancel in the Holdsport app as soon as possible. Repeated no-shows without cancellation may result in a conversation with team management.' },
