@@ -107,16 +107,23 @@ function buildRoster(members, config) {
     // the website's staff concept (real coaches are sometimes listed as players
     // and vice versa). Everyone else is a player.
     if (ov.group === 'staff') {
-      staff.push({ name, roleKey: ov.roleKey || 'coach', emoji: ov.emoji || '🧑‍🏫' })
+      // _order is internal — used only to sort the staff section, then stripped.
+      staff.push({ name, roleKey: ov.roleKey || 'coach', emoji: ov.emoji || '🧑‍🏫', _order: ov.order ?? Infinity })
       if (ov.alsoPlayer) players.push(playerEntry) // staff who also skate stay in the squad
     } else {
       players.push(playerEntry)
     }
   }
 
-  staff.sort(sortByName)
+  // Staff: by explicit order (head coach first), then alphabetical. Players: by name.
+  staff.sort((a, b) => a._order - b._order || sortByName(a, b))
   players.sort(sortByName)
-  return { generatedAt: new Date().toISOString(), source: 'holdsport-api', staff, players }
+  return {
+    generatedAt: new Date().toISOString(),
+    source: 'holdsport-api',
+    staff: staff.map(({ _order, ...s }) => s),
+    players,
+  }
 }
 
 async function main() {
