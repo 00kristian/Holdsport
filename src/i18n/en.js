@@ -9,6 +9,7 @@ export default {
     contact: 'Contact',
     schedule: 'Schedule',
     burgerCup: '🍔 Burger Cup',
+    leaderboard: '🏆 Attendance',
   },
   home: {
     kicker: 'Season {season}',
@@ -130,6 +131,17 @@ export default {
       dk: 'Denmark',
       row: 'Rest of the World',
     },
+  },
+  leaderboard: {
+    title: 'ATTENDANCE',
+    subtitle: "The season's turnout king — ranked by activities signed up for.",
+    basis: 'Counts RSVPs ("Tilmeldt") — not verified attendance.',
+    window: 'Season since {date} · {count} activities counted',
+    top5: 'Top 5',
+    fullList: 'Whole squad',
+    activitiesShort: 'activities',
+    updated: 'Updated',
+    empty: 'No data yet.',
   },
   activity: {
     fallbackName: 'Activity',
