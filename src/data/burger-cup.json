@@ -1,0 +1,13 @@
+{
+  "_comment": "Hand-maintained Burger Cup results (the season-finale best-of-7 between the Danes and everyone else). Editions are newest-first. winner is a team key (dk | row); score is winner-first, e.g. '4–1'. Team display names live in src/i18n under burger.teams. Update this after each cup.",
+  "teams": {
+    "dk": { "emoji": "🇩🇰" },
+    "row": { "emoji": "🌍" }
+  },
+  "editions": [
+    { "year": "2025", "winner": "dk", "score": "4–1" },
+    { "year": "2024", "winner": "row", "score": "4–3" },
+    { "year": "2023", "winner": "row", "score": "4–3" },
+    { "year": "2022", "winner": "row", "score": "4–3" }
+  ]
+}

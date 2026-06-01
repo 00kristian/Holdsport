@@ -8,6 +8,7 @@ export default {
     team: 'The Team',
     contact: 'Contact',
     schedule: 'Schedule',
+    burgerCup: '🍔 Burger Cup',
   },
   home: {
     kicker: 'Season {season}',
@@ -115,6 +116,20 @@ export default {
     error: "Couldn't load the schedule right now. Please try again later.",
     updated: 'Updated',
     stale: 'may be out of date',
+  },
+  burger: {
+    title: 'BURGER CUP',
+    subtitle: "The season's highlight — Denmark vs the Rest of the World, best of 7.",
+    allTime: 'All-time standings',
+    seriesCaption: 'Total series titles won',
+    reigning: 'Reigning champions',
+    history: 'Past editions',
+    won: 'won',
+    rulesLink: 'See the Burger Cup rules',
+    teams: {
+      dk: 'Denmark',
+      row: 'Rest of the World',
+    },
   },
   activity: {
     fallbackName: 'Activity',
