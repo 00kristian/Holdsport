@@ -100,15 +100,16 @@ function buildRoster(members, config) {
 
     const ov = overrides[String(m.id)] || {}
     const name = ov.name || cleanName(m)
+    const title = ov.title ? { title: ov.title } : {} // optional extra label on the card
     const playerRole = looksLikeGoalie(m) ? 'goalie' : 'player'
-    const playerEntry = { name, roleKey: playerRole, emoji: playerRole === 'goalie' ? '🥅' : '🏒' }
+    const playerEntry = { name, roleKey: playerRole, emoji: playerRole === 'goalie' ? '🥅' : '🏒', ...title }
 
     // Staff is opt-in via overrides — the Holdsport "role" field doesn't match
     // the website's staff concept (real coaches are sometimes listed as players
     // and vice versa). Everyone else is a player.
     if (ov.group === 'staff') {
       // _order is internal — used only to sort the staff section, then stripped.
-      staff.push({ name, roleKey: ov.roleKey || 'coach', emoji: ov.emoji || '🧑‍🏫', _order: ov.order ?? Infinity })
+      staff.push({ name, roleKey: ov.roleKey || 'coach', emoji: ov.emoji || '🧑‍🏫', ...title, _order: ov.order ?? Infinity })
       if (ov.alsoPlayer) players.push(playerEntry) // staff who also skate stay in the squad
     } else {
       players.push(playerEntry)

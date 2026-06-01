@@ -29,7 +29,7 @@ const { t } = useI18n()
 
 // Roster is generated from the Holdsport API (scripts/fetch-roster.mjs) and
 // already filtered + sorted by name. Here we just resolve the role label.
-const toMember = (m) => ({ name: m.name, role: t(`team.roles.${m.roleKey}`), emoji: m.emoji })
+const toMember = (m) => ({ name: m.name, role: t(`team.roles.${m.roleKey}`), emoji: m.emoji, title: m.title })
 
 const staff = computed(() => roster.staff.map(toMember))
 const players = computed(() => roster.players.map(toMember))

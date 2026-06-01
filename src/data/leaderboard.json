@@ -1,43 +1,33 @@
 {
-  "generatedAt": "2026-06-01T11:38:20.598Z",
+  "generatedAt": "2026-06-01T12:01:00.186Z",
   "source": "holdsport-api",
   "seasonStart": "2025-08-01",
-  "activitiesCounted": 133,
+  "activitiesCounted": 111,
   "ranking": [
     {
       "userId": 1099419,
       "name": "Julien Bedard",
-      "attended": 73
+      "attended": 71
     },
     {
       "userId": 1624734,
       "name": "Michael Prencipe",
-      "attended": 70
+      "attended": 68
     },
     {
       "userId": 59329,
       "name": "Oscar Pino",
-      "attended": 64
+      "attended": 63
     },
     {
       "userId": 4107555,
       "name": "Maksim Telelekov",
-      "attended": 61
+      "attended": 59
     },
     {
       "userId": 1572015,
       "name": "William Nistrup",
-      "attended": 56
-    },
-    {
-      "userId": 1341624,
-      "name": "Toni Tuira",
       "attended": 55
-    },
-    {
-      "userId": 862574,
-      "name": "Jannick W",
-      "attended": 54
     },
     {
       "userId": 1901293,
@@ -45,18 +35,23 @@
       "attended": 54
     },
     {
+      "userId": 1341624,
+      "name": "Toni Tuira",
+      "attended": 53
+    },
+    {
+      "userId": 862574,
+      "name": "Jannick W",
+      "attended": 52
+    },
+    {
       "userId": 2018088,
       "name": "Anton Svejstrup",
-      "attended": 52
+      "attended": 51
     },
     {
       "userId": 1550001,
       "name": "Elias Rasmussen",
-      "attended": 49
-    },
-    {
-      "userId": 1444828,
-      "name": "Danny Triesler",
       "attended": 48
     },
     {
@@ -65,23 +60,23 @@
       "attended": 48
     },
     {
+      "userId": 1444828,
+      "name": "Danny Triesler",
+      "attended": 47
+    },
+    {
       "userId": 1309032,
       "name": "Alex Shelko",
-      "attended": 47
+      "attended": 46
     },
     {
       "userId": 1976491,
       "name": "Guillem Torner",
-      "attended": 45
+      "attended": 43
     },
     {
       "userId": 2264575,
       "name": "Mads Monies",
-      "attended": 43
-    },
-    {
-      "userId": 1781129,
-      "name": "Toby Keating",
       "attended": 43
     },
     {
@@ -90,19 +85,24 @@
       "attended": 42
     },
     {
+      "userId": 1781129,
+      "name": "Toby Keating",
+      "attended": 41
+    },
+    {
       "userId": 2198618,
       "name": "Karl Beckman",
-      "attended": 39
+      "attended": 37
     },
     {
       "userId": 5335672,
       "name": "Sebastian Ammitsøe",
-      "attended": 36
+      "attended": 35
     },
     {
       "userId": 1257336,
       "name": "Balder Lehmann",
-      "attended": 33
+      "attended": 32
     },
     {
       "userId": 1531322,
@@ -115,24 +115,24 @@
       "attended": 25
     },
     {
-      "userId": 862791,
-      "name": "Christian Lacoppidan",
-      "attended": 21
-    },
-    {
       "userId": 5587653,
       "name": "Francesco Iannantuono",
       "attended": 20
     },
     {
-      "userId": 1789149,
-      "name": "Benjamin Møller",
-      "attended": 18
+      "userId": 862791,
+      "name": "Christian Lacoppidan",
+      "attended": 19
     },
     {
       "userId": 2131134,
       "name": "Seb Jensen",
       "attended": 18
+    },
+    {
+      "userId": 1789149,
+      "name": "Benjamin Møller",
+      "attended": 17
     },
     {
       "userId": 5855040,

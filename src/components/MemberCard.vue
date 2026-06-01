@@ -6,6 +6,7 @@
     </div>
     <div class="member-name">{{ name }}</div>
     <div class="member-role">{{ role }}</div>
+    <div v-if="title" class="member-title">{{ title }}</div>
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 defineProps({
   name:  { type: String,  required: true },
   role:  { type: String,  required: true },
+  title: { type: String,  default: null },
   image: { type: String,  default: null },
   emoji: { type: String,  default: '🏒' },
 })
@@ -41,5 +43,13 @@ defineProps({
 .member-role {
   font-size: 0.72rem; color: var(--blue-light);
   text-transform: uppercase; letter-spacing: 0.08em;
+}
+.member-title {
+  display: inline-block; margin-top: 0.5rem;
+  font-family: var(--font-cond); font-weight: 700;
+  font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--yellow);
+  background: #1a1a08; border: 1px solid #3a3410;
+  border-radius: 999px; padding: 0.15rem 0.6rem;
 }
 </style>

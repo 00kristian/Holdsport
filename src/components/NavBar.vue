@@ -37,8 +37,8 @@
       <!-- Right side: lang switcher + hamburger -->
       <div class="nav-right">
         <div class="lang-switcher">
-          <button :class="['lang-btn', { active: locale === 'da' }]" @click="setLocale('da')" title="Dansk">🇩🇰</button>
-          <button :class="['lang-btn', { active: locale === 'en' }]" @click="setLocale('en')" title="English">🇬🇧</button>
+          <button :class="['lang-btn', { active: locale === 'da' }]" @click="setLocale('da')" title="Dansk">DA</button>
+          <button :class="['lang-btn', { active: locale === 'en' }]" @click="setLocale('en')" title="English">EN</button>
         </div>
         <button class="hamburger" :class="{ open: menuOpen }" @click="menuOpen = !menuOpen" aria-label="Menu">
           <span></span><span></span><span></span>
@@ -63,8 +63,8 @@
           <li><RouterLink to="/fremmoede" @click="menuOpen = false">{{ t('nav.leaderboard') }}</RouterLink></li>
         </ul>
         <div class="mobile-lang">
-          <button :class="['mobile-lang-btn', { active: locale === 'da' }]" @click="setLocale('da'); menuOpen = false">🇩🇰 Dansk</button>
-          <button :class="['mobile-lang-btn', { active: locale === 'en' }]" @click="setLocale('en'); menuOpen = false">🇬🇧 English</button>
+          <button :class="['mobile-lang-btn', { active: locale === 'da' }]" @click="setLocale('da'); menuOpen = false">Dansk</button>
+          <button :class="['mobile-lang-btn', { active: locale === 'en' }]" @click="setLocale('en'); menuOpen = false">English</button>
         </div>
       </div>
     </Transition>
@@ -138,16 +138,18 @@ function setLocale(lang)   { locale.value = lang; localStorage.setItem('lang', l
 /* Right side */
 .nav-right { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
 
-/* Lang switcher */
-.lang-switcher { display: flex; gap: 0.25rem; }
+/* Lang switcher — text labels (flag emoji don't render on Windows browsers) */
+.lang-switcher { display: flex; gap: 0.2rem; }
 .lang-btn {
-  background: none; border: 1px solid transparent;
-  border-radius: var(--radius-sm); padding: 0.2rem 0.4rem;
-  font-size: 1.2rem; cursor: pointer; line-height: 1;
-  opacity: 0.45; transition: opacity 0.15s, border-color 0.15s;
+  background: none; border: 1px solid var(--border2);
+  border-radius: var(--radius-sm); padding: 0.25rem 0.5rem;
+  font-family: var(--font-cond); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.06em; color: var(--steel);
+  cursor: pointer; line-height: 1;
+  opacity: 0.65; transition: opacity 0.15s, color 0.15s, background 0.15s, border-color 0.15s;
 }
-.lang-btn:hover { opacity: 0.8; }
-.lang-btn.active { opacity: 1; border-color: var(--border2); }
+.lang-btn:hover { opacity: 1; color: var(--white); }
+.lang-btn.active { opacity: 1; color: var(--white-pure); background: var(--blue); border-color: var(--blue); }
 
 /* Hamburger — hidden on desktop */
 .hamburger {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T15:08:22.877Z",
+  "generatedAt": "2026-06-01T12:00:48.119Z",
   "source": "holdsport-api",
   "staff": [
     {
@@ -47,7 +47,8 @@
     {
       "name": "Christian Lacoppidan",
       "roleKey": "player",
-      "emoji": "🏒"
+      "emoji": "🏒",
+      "title": "Party manager"
     },
     {
       "name": "Danny Triesler",
@@ -127,7 +128,8 @@
     {
       "name": "Maxime Bettez",
       "roleKey": "player",
-      "emoji": "🏒"
+      "emoji": "🏒",
+      "title": "Beer manager"
     },
     {
       "name": "Michael Prencipe",

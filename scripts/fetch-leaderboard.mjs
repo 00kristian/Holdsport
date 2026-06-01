@@ -88,19 +88,30 @@ async function fetchActivities(teamId, email, password) {
   return [...byId.values()]
 }
 
+// Count practices and games only — not socials, meetings, cups, etc. "Åben
+// Senior" sessions are event_type "Træning", so they're included (unlike the
+// Program page, the leaderboard does NOT apply programExcludeNames).
+function isPracticeOrGame(a) {
+  const t = String(a.event_type || '').toLowerCase()
+  return /træning|practice|training/.test(t) || /kamp|match|game/.test(t)
+}
+// Cancelled sessions are prefixed "AFLYST" in the name — a signup for one isn't
+// real turnout, so leave them out.
+function isCancelled(a) {
+  return /^\s*aflyst\b/i.test(a.name || '')
+}
+
 function buildLeaderboard(members, activities, config) {
   const excluded = new Set((config.excludeMemberIds || []).map(Number))
   const overrides = config.overrides || {}
-  // Activity event types to leave out of the count (e.g. admin meetings).
-  const excludeTypes = (config.leaderboardExcludeEventTypes || []).map((s) => s.toLowerCase())
   const today = new Date().toISOString().split('T')[0]
 
-  // Only activities that have already started (signups for things that happened),
-  // within the season, excluding any opted-out event types.
+  // Practices + games that have already started this season (signups for things
+  // that actually happened), excluding cancelled sessions.
   const counted = activities.filter((a) => {
     const date = String(a.starttime || '').split('T')[0]
     if (!date || date < SEASON_START || date > today) return false
-    if (excludeTypes.includes(String(a.event_type || '').toLowerCase())) return false
+    if (!isPracticeOrGame(a) || isCancelled(a)) return false
     return true
   })
 
