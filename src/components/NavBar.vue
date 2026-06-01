@@ -8,7 +8,6 @@
 
       <!-- Desktop nav links -->
       <ul class="nav-links">
-        <li><RouterLink to="/">{{ t('nav.home') }}</RouterLink></li>
         <li><RouterLink to="/ny-spiller">{{ t('nav.newPlayer') }}</RouterLink></li>
 
         <li class="dropdown" @mouseenter="dropdownOpen = true" @mouseleave="dropdownOpen = false">
@@ -51,7 +50,6 @@
     <Transition name="mobile-slide">
       <div v-show="menuOpen" class="mobile-menu">
         <ul class="mobile-links">
-          <li><RouterLink to="/"           @click="menuOpen = false">{{ t('nav.home') }}</RouterLink></li>
           <li><RouterLink to="/ny-spiller" @click="menuOpen = false">{{ t('nav.newPlayer') }}</RouterLink></li>
           <li class="mobile-sub-label">{{ t('nav.rules') }}</li>
           <li class="mobile-sub"><RouterLink to="/regler" @click="setReglerTab('generelle'); menuOpen = false">{{ t('nav.generalRules') }}</RouterLink></li>
