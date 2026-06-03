@@ -1,11 +1,10 @@
 <template>
-  <main>
+  <main class="home-main">
     <!-- Hero -->
     <section class="hero">
-      <div class="hero-rink"></div>
-      <div class="hero-glow"></div>
+      <img src="/images/teamphoto.jpeg" alt="" class="hero-photo" aria-hidden="true" />
+      <div class="hero-overlay"></div>
       <div class="hero-scratches"></div>
-      <div class="hero-jersey">9</div>
       <div class="hero-content container">
         <div class="hero-left">
           <div class="hero-kicker">{{ t('home.kicker', { season }) }}</div>
@@ -38,20 +37,6 @@
       <RouterLink v-else to="/program" class="next-up-empty">{{ t('home.nextUp.empty') }}</RouterLink>
     </div>
 
-    <!-- Quick links -->
-    <div class="container quick-links">
-      <div class="section-label" style="margin-top: 2rem">{{ t('home.quickLabel') }}</div>
-      <nav class="link-list">
-        <RouterLink v-for="link in quickLinks" :key="link.to" :to="link.to" class="link-row">
-          <span class="link-icon">{{ link.icon }}</span>
-          <span class="link-body">
-            <span class="link-title">{{ link.title }}</span>
-            <span class="link-desc">{{ link.desc }}</span>
-          </span>
-          <span class="link-arrow">›</span>
-        </RouterLink>
-      </nav>
-    </div>
   </main>
 </template>
 
@@ -80,45 +65,35 @@ const stats = computed(() => [
   { value: String(roster.staff.length),     label: t('home.statCoaches') },
 ])
 
-const quickLinks = computed(() => [
-  { to: '/ny-spiller', icon: '⚡', title: t('home.ql.newPlayer.title'), desc: t('home.ql.newPlayer.desc') },
-  { to: '/regler',     icon: '📋', title: t('home.ql.rules.title'),     desc: t('home.ql.rules.desc') },
-  { to: '/holdet',     icon: '👥', title: t('home.ql.team.title'),      desc: t('home.ql.team.desc') },
-  { to: '/kontakt',    icon: '📬', title: t('home.ql.contact.title'),   desc: t('home.ql.contact.desc') },
-  { to: '/program',    icon: '📅', title: t('home.ql.schedule.title'),  desc: t('home.ql.schedule.desc') },
-])
 </script>
 
 <style scoped>
 .hero {
-  min-height: 500px; position: relative; overflow: hidden;
+  min-height: 560px; position: relative; overflow: hidden;
   background: var(--navy2);
   display: flex; flex-direction: column; justify-content: flex-end;
   border-bottom: 1px solid var(--border);
 }
-.hero-rink {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 30% 50% at 75% 50%, transparent 49%, #1560bd18 50%, transparent 51%),
-    linear-gradient(90deg, transparent 60%, #1560bd12 60.5%, transparent 61%),
-    linear-gradient(90deg, transparent 49.5%, #c8304a10 50%, transparent 50.5%);
+.hero-photo {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 70%;
+  z-index: 0;
 }
-.hero-glow {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 50% 70% at 20% 60%, #1560bd14 0%, transparent 60%);
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 14, 28, 0.55) 0%,
+    rgba(8, 14, 28, 0.55) 30%,
+    rgba(8, 14, 28, 0.85) 100%
+  );
 }
 .hero-scratches {
-  position: absolute; inset: 0; opacity: 0.03;
+  position: absolute; inset: 0; z-index: 2; opacity: 0.04;
   background-image: repeating-linear-gradient(92deg, transparent, transparent 2px, #fff 2px, #fff 3px);
   background-size: 200px 100%;
 }
-.hero-jersey {
-  position: absolute; right: 2rem; bottom: 0;
-  font-family: var(--font-display); font-size: 22rem; line-height: 1;
-  color: var(--navy3); letter-spacing: -0.05em;
-  user-select: none; pointer-events: none; opacity: 0.5;
-}
-.hero-content { position: relative; z-index: 2; padding: 4rem 2rem 3.5rem; }
+.hero-content { position: relative; z-index: 3; padding: 4rem 2rem 3.5rem; }
 .hero-kicker {
   font-family: var(--font-cond); font-size: 0.78rem; font-weight: 700;
   letter-spacing: 0.2em; text-transform: uppercase;
@@ -143,7 +118,10 @@ const quickLinks = computed(() => [
 .stat-num { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.06em; color: var(--white-pure); line-height: 1; }
 .stat-label { font-family: var(--font-cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 0.1rem; }
 
+.home-main { flex: 1; display: flex; flex-direction: column; }
+
 /* Next up */
+.next-up { flex: 1; padding-bottom: 3rem; }
 .next-up-link { display: block; text-decoration: none; }
 .next-up-link :deep(.activity-card) { cursor: pointer; }
 .next-up-empty {
@@ -152,28 +130,6 @@ const quickLinks = computed(() => [
   padding: 1rem 1.25rem; color: var(--muted); font-size: 0.9rem;
 }
 .next-up-empty:hover { border-color: var(--border2); }
-
-/* Quick links */
-.quick-links { padding-bottom: 3rem; }
-.link-list { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.link-row {
-  display: flex; align-items: center; gap: 1rem;
-  padding: 1rem 1.25rem;
-  text-decoration: none; color: var(--white);
-  background: var(--navy2);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.15s;
-}
-.link-row:last-child { border-bottom: none; }
-.link-row:hover { background: var(--navy3); }
-.link-icon { font-size: 1.25rem; flex-shrink: 0; width: 2rem; text-align: center; }
-.link-body { display: flex; flex-direction: column; flex: 1; min-width: 0; }
-.link-title {
-  font-family: var(--font-cond); font-size: 0.95rem; font-weight: 700;
-  letter-spacing: 0.05em; text-transform: uppercase; color: var(--white-pure);
-}
-.link-desc { font-size: 0.8rem; color: var(--steel); margin-top: 0.1rem; }
-.link-arrow { font-size: 1.4rem; color: var(--blue-light); flex-shrink: 0; line-height: 1; }
 
 @media (max-width: 768px) {
   .hero { min-height: unset; }

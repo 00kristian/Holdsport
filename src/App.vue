@@ -25,6 +25,8 @@ import SiteFooter from './components/SiteFooter.vue'
 }
 .app-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
   background: var(--navy2);
 }
 </style>
