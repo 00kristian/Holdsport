@@ -66,10 +66,10 @@
         </ul>
         <div class="mobile-lang">
           <button :class="['mobile-lang-btn', { active: locale === 'da' }]" @click="setLocale('da'); menuOpen = false">
-            <FlagDk class="mobile-lang-icon flag" /> Dansk
+            <FlagDk class="mobile-lang-icon flag" />
           </button>
           <button :class="['mobile-lang-btn', { active: locale === 'en' }]" @click="setLocale('en'); menuOpen = false">
-            <GlobeIcon class="mobile-lang-icon globe" /> English
+            <GlobeIcon class="mobile-lang-icon globe" />
           </button>
         </div>
       </div>

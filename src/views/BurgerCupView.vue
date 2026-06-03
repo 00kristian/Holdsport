@@ -16,7 +16,7 @@
       </div>
       <div class="sb-vs">–</div>
       <div class="sb-team" :class="{ leading: rowWins > dkWins }">
-        <div class="sb-flag"><GlobeIcon class="sb-globe-img" /></div>
+        <div class="sb-flag"><span class="sb-emoji">🌍</span></div>
         <div class="sb-name">{{ t('burger.teams.row') }}</div>
         <div class="sb-wins">{{ rowWins }}</div>
       </div>
@@ -30,7 +30,7 @@
         <div class="reigning-label">{{ t('burger.reigning') }}</div>
         <div class="reigning-team">
           <FlagDk v-if="reigning.winner === 'dk'" class="reigning-flag" />
-          <GlobeIcon v-else class="reigning-globe" />
+          <span v-else class="reigning-emoji">🌍</span>
           {{ t('burger.teams.' + reigning.winner) }}
           <span class="reigning-meta">· {{ reigning.year }} · {{ reigning.score }}</span>
         </div>
@@ -43,8 +43,8 @@
       <li v-for="ed in data.editions" :key="ed.year" class="edition-row">
         <div class="ed-year">{{ ed.year }}</div>
         <div class="ed-winner">
-          <FlagDk v-if="ed.winner === 'dk'" class="ed-flag-icon flag" />
-          <GlobeIcon v-else class="ed-flag-icon globe" />
+          <FlagDk v-if="ed.winner === 'dk'" class="ed-flag-icon" />
+          <span v-else class="ed-emoji">🌍</span>
           {{ t('burger.teams.' + ed.winner) }}
         </div>
         <span class="badge badge-green">{{ t('burger.won') }} {{ ed.score }}</span>
@@ -63,7 +63,6 @@ import { useI18n } from 'vue-i18n'
 import { useReglerStore } from '../stores/regler.js'
 import data from '../data/burger-cup.json'
 import FlagDk from '../components/FlagDk.vue'
-import GlobeIcon from '../components/GlobeIcon.vue'
 
 const { t } = useI18n()
 const reglerStore = useReglerStore()
@@ -90,8 +89,7 @@ function goToBurgerRules() {
 .sb-team.leading { opacity: 1; }
 .sb-flag { display: flex; justify-content: center; align-items: center; height: 2.5rem; }
 .sb-flag-img { width: 3.5rem; height: 2.6rem; border-radius: 3px; }
-.sb-globe-img { width: 2.5rem; height: 2.5rem; color: var(--muted); }
-.sb-team.leading .sb-globe-img { color: var(--blue-light); }
+.sb-emoji { font-size: 2.25rem; line-height: 1; }
 .sb-name {
   font-family: var(--font-cond); font-weight: 700; font-size: 0.85rem;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--steel);
@@ -124,7 +122,7 @@ function goToBurgerRules() {
   display: flex; align-items: center; gap: 0.5rem;
 }
 .reigning-flag { width: 1.8rem; height: 1.35rem; border-radius: 2px; flex-shrink: 0; }
-.reigning-globe { width: 1.3rem; height: 1.3rem; flex-shrink: 0; color: var(--blue-light); }
+.reigning-emoji { font-size: 1.2rem; }
 .reigning-meta { color: var(--steel); font-weight: 600; font-size: 0.9rem; }
 
 /* History */
@@ -140,8 +138,8 @@ function goToBurgerRules() {
   letter-spacing: 0.04em; text-transform: uppercase; color: var(--white);
   display: flex; align-items: center; gap: 0.5rem;
 }
-.ed-flag-icon.flag { width: 1.6rem; height: 1.2rem; border-radius: 2px; flex-shrink: 0; }
-.ed-flag-icon.globe { width: 1.2rem; height: 1.2rem; flex-shrink: 0; color: var(--steel); }
+.ed-flag-icon { width: 1.6rem; height: 1.2rem; border-radius: 2px; flex-shrink: 0; }
+.ed-emoji { font-size: 1.2rem; }
 
 .rules-link {
   display: inline-block; margin-top: 2rem;
