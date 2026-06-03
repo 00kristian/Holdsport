@@ -33,22 +33,28 @@
     <!-- FAQ -->
     <h2 class="faq-heading">{{ t('newPlayer.faqHeading') }}</h2>
     <div class="faq">
-      <div v-for="item in faq" :key="item.q" class="faq-item">
-        <div class="faq-q">{{ item.q }}</div>
-        <div class="faq-a">{{ item.a }}</div>
+      <div v-for="item in faq" :key="item.q" class="faq-item" :class="{ open: openFaq === item.q }">
+        <button class="faq-q" @click="openFaq = openFaq === item.q ? null : item.q">
+          {{ item.q }}
+        </button>
+        <Transition name="faq">
+          <div v-show="openFaq === item.q" class="faq-a">{{ item.a }}</div>
+        </Transition>
       </div>
     </div>
   </main>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t, messages, locale } = useI18n()
 
 const steps = computed(() => messages.value[locale.value].newPlayer.steps)
 const faq   = computed(() => messages.value[locale.value].newPlayer.faq)
+
+const openFaq = ref(null)
 </script>
 
 <style scoped>
@@ -66,7 +72,15 @@ const faq   = computed(() => messages.value[locale.value].newPlayer.faq)
 
 .faq-heading { font-family: var(--font-display); font-size: 2rem; letter-spacing: 0.06em; margin: 3rem 0 1.25rem; color: var(--white-pure); }
 .faq-item { border-bottom: 1px solid var(--border); }
-.faq-q { padding: 1rem 0; font-family: var(--font-cond); font-size: 1rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; color: var(--white); display: flex; justify-content: space-between; align-items: center; }
-.faq-q::after { content: '+'; color: var(--blue-light); font-size: 1.3rem; font-family: monospace; }
+.faq-q {
+  padding: 1rem 0; font-family: var(--font-cond); font-size: 1rem; font-weight: 600;
+  letter-spacing: 0.03em; text-transform: uppercase; color: var(--white);
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%; background: none; border: none; cursor: pointer; text-align: left;
+}
+.faq-q::after { content: '+'; color: var(--blue-light); font-size: 1.3rem; font-family: monospace; flex-shrink: 0; }
+.faq-item.open .faq-q::after { content: '−'; }
 .faq-a { padding: 0 0 1rem; font-size: 0.9rem; color: var(--steel); line-height: 1.65; }
+.faq-enter-active, .faq-leave-active { transition: opacity 0.18s ease; }
+.faq-enter-from, .faq-leave-to { opacity: 0; }
 </style>
