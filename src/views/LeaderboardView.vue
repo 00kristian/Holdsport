@@ -6,15 +6,46 @@
       <p>{{ t('leaderboard.subtitle') }}</p>
     </div>
 
+    <!-- Season selector -->
+    <div class="season-row">
+      <label class="season-label" for="season-select">{{ t('leaderboard.seasonLabel') }}</label>
+      <select id="season-select" v-model="selectedLabel" class="season-select">
+        <option v-for="s in seasons" :key="s.label" :value="s.label">{{ s.label }}</option>
+      </select>
+    </div>
+
     <template v-if="ranking.length">
-      <!-- Honesty note + window -->
+      <!-- Meta -->
       <div class="lb-meta">
         <span class="lb-badge">{{ t('leaderboard.basis') }}</span>
-        <span class="lb-window">{{ t('leaderboard.window', { date: seasonLabel, count: data.activitiesCounted }) }}</span>
+        <span class="lb-window">{{ t('leaderboard.window', { season: selectedLabel, count: current.activitiesCounted }) }}</span>
       </div>
 
+      <!-- Frameldt stat (issue #36) -->
+      <div class="frameldt-stat" @click="frameldtOpen = !frameldtOpen" role="button" tabindex="0" @keydown.enter="frameldtOpen = !frameldtOpen">
+        <div class="frameldt-left">
+          <span class="frameldt-icon">🚫</span>
+          <div>
+            <div class="frameldt-title">{{ t('leaderboard.frameldt') }}</div>
+            <div class="frameldt-desc">{{ t('leaderboard.frameldtDesc') }}</div>
+          </div>
+        </div>
+        <span class="frameldt-toggle">{{ frameldtOpen ? '−' : '+' }}</span>
+      </div>
+      <Transition name="faq">
+        <div v-show="frameldtOpen" class="frameldt-panel">
+          <ol class="lb-list">
+            <li v-for="(r, i) in absentRanking" :key="r.userId" class="lb-row">
+              <span class="lb-rank">{{ i + 1 }}</span>
+              <span class="lb-name">{{ r.name }}</span>
+              <span class="lb-count">{{ r.absences }} <span class="lb-unit">{{ t('leaderboard.frameldtAbsences') }}</span></span>
+            </li>
+          </ol>
+        </div>
+      </Transition>
+
       <!-- Top 5 bar chart -->
-      <div class="section-label">{{ t('leaderboard.top5') }}</div>
+      <div class="section-label" style="margin-top: 1.5rem">{{ t('leaderboard.top5') }}</div>
       <div class="chart">
         <div v-for="(r, i) in top5" :key="r.userId" class="chart-row">
           <div class="chart-rank">{{ medal(i) }}</div>
@@ -36,7 +67,7 @@
         <li v-for="(r, i) in ranking" :key="r.userId" class="lb-row" :class="{ top: i < 3 }">
           <span class="lb-rank">{{ i < 3 ? medal(i) : i + 1 }}</span>
           <span class="lb-name">{{ r.name }}</span>
-          <span class="lb-pct" v-if="data.activitiesCounted">{{ pct(r.attended) }}%</span>
+          <span class="lb-pct" v-if="current.activitiesCounted">{{ pct(r.attended) }}%</span>
           <span class="lb-count">{{ r.attended }} <span class="lb-unit">{{ t('leaderboard.activitiesShort') }}</span></span>
         </li>
       </ol>
@@ -49,40 +80,65 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import data from '../data/leaderboard.json'
 
 const { t, locale } = useI18n()
 
-// Already sorted (attended desc, name asc) at build time.
-const ranking = computed(() => data.ranking || [])
+const seasons = computed(() => data.seasons || [])
+
+const selectedLabel = ref(seasons.value[0]?.label || '')
+
+const current = computed(() => seasons.value.find((s) => s.label === selectedLabel.value) || seasons.value[0] || {})
+
+const ranking = computed(() => current.value.ranking || [])
 const top5 = computed(() => ranking.value.slice(0, 5))
 
-// Scale bars to the leader so the chart fills its width.
 const maxAttended = computed(() => ranking.value[0]?.attended || 1)
 const barWidth = (n) => `${Math.max(4, Math.round((n / maxAttended.value) * 100))}%`
-const pct = (n) => Math.round((n / data.activitiesCounted) * 100)
+const pct = (n) => Math.round((n / current.value.activitiesCounted) * 100)
 const medal = (i) => ['🥇', '🥈', '🥉'][i] || ''
 
-const seasonLabel = computed(() =>
-  new Date(data.seasonStart).toLocaleDateString(locale.value === 'da' ? 'da-DK' : 'en-GB', {
-    day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/Copenhagen',
-  }),
-)
+// Frameldt: sort by most absences (activitiesCounted - attended), descending.
+const frameldtOpen = ref(false)
+const absentRanking = computed(() => {
+  const total = current.value.activitiesCounted || 0
+  return [...ranking.value]
+    .map((r) => ({ ...r, absences: total - r.attended }))
+    .sort((a, b) => b.absences - a.absences || a.name.localeCompare(b.name, 'da'))
+})
 
 const updatedLabel = computed(() => {
-  if (!data.generatedAt) return ''
-  return new Date(data.generatedAt).toLocaleString(locale.value === 'da' ? 'da-DK' : 'en-GB', {
+  if (!current.value.generatedAt) return ''
+  return new Date(current.value.generatedAt).toLocaleString(locale.value === 'da' ? 'da-DK' : 'en-GB', {
     day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Copenhagen',
   })
 })
 </script>
 
 <style scoped>
+/* Season selector */
+.season-row {
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;
+}
+.season-label {
+  font-family: var(--font-cond); font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel);
+}
+.season-select {
+  font-family: var(--font-cond); font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 0.06em; color: var(--white-pure);
+  background: var(--navy2); border: 1px solid var(--border2);
+  border-radius: var(--radius-sm); padding: 0.4rem 0.8rem; cursor: pointer;
+  appearance: auto;
+}
+.season-select:focus { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* Meta */
 .lb-meta {
   display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 .lb-badge {
   font-size: 0.74rem; color: var(--steel);
@@ -90,6 +146,34 @@ const updatedLabel = computed(() => {
   border-radius: 999px; padding: 0.3rem 0.7rem;
 }
 .lb-window { font-size: 0.78rem; color: var(--muted); }
+
+/* Frameldt stat */
+.frameldt-stat {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--navy2); border: 1px solid var(--border2);
+  border-left: 3px solid var(--red, #c8304a);
+  border-radius: var(--radius); padding: 0.9rem 1.25rem;
+  cursor: pointer; user-select: none; margin-bottom: 0.25rem;
+  transition: border-color 0.15s;
+}
+.frameldt-stat:hover { border-color: var(--border2); }
+.frameldt-left { display: flex; align-items: center; gap: 0.85rem; }
+.frameldt-icon { font-size: 1.4rem; }
+.frameldt-title {
+  font-family: var(--font-cond); font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--white-pure);
+}
+.frameldt-desc { font-size: 0.78rem; color: var(--steel); margin-top: 0.1rem; }
+.frameldt-toggle {
+  font-family: monospace; font-size: 1.3rem; color: var(--blue-light); flex-shrink: 0;
+}
+.frameldt-panel {
+  background: var(--navy2); border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius); padding: 0.75rem 1rem 0.5rem;
+  margin-bottom: 1rem;
+}
+.frameldt-panel .lb-list { gap: 0.3rem; }
+.frameldt-panel .lb-row { padding: 0.5rem 0.85rem; }
 
 /* Top 5 bar chart */
 .chart { display: flex; flex-direction: column; gap: 0.85rem; }
@@ -136,6 +220,10 @@ const updatedLabel = computed(() => {
 
 .updated { margin-top: 1.5rem; color: var(--muted); font-size: 0.78rem; }
 .empty-state { color: var(--muted); padding: 2rem 0; font-size: 0.9rem; }
+
+/* Frameldt panel transition */
+.faq-enter-active, .faq-leave-active { transition: opacity 0.18s ease; }
+.faq-enter-from, .faq-leave-to { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .chart-bar { animation: none; }

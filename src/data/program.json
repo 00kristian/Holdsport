@@ -1,17 +1,7 @@
 {
-  "generatedAt": "2026-05-29T15:15:10.408Z",
+  "generatedAt": "2026-06-03T07:27:22.139Z",
   "source": "holdsport-api",
   "events": [
-    {
-      "id": 53748256,
-      "name": "2.division (omkl. 2)",
-      "eventType": "Træning",
-      "start": "2026-06-01T21:00:00+02:00",
-      "end": "2026-06-01T23:00:00+02:00",
-      "place": "KSF",
-      "comment": "",
-      "attending": 13
-    },
     {
       "id": 53748262,
       "name": "2.division (omkl. 2)",
@@ -20,7 +10,7 @@
       "end": "2026-06-03T21:55:00+02:00",
       "place": "KSF",
       "comment": "",
-      "attending": 7
+      "attending": 11
     },
     {
       "id": 53441498,
@@ -40,7 +30,7 @@
       "end": "2026-06-06T21:00:00+02:00",
       "place": "Østerbro Skøjtehal",
       "comment": "Sommerfest for hele klubben! Fra løve til OB:-)\n\nDer vil være aktiviteter på og udenfor isen.\nBilletpris dækker mad og snacks. \nDrikkevarer kan købes i kiosken og må også gerne medbringes:-)\n\nMere detaljeret program følger (Bemærk at antallet af tilmeldte/afmeldte, etc. for denne aktivitet kan afvige fra webversionen)",
-      "attending": 68
+      "attending": 71
     },
     {
       "id": 53748257,
@@ -50,7 +40,7 @@
       "end": "2026-06-08T23:00:00+02:00",
       "place": "KSF",
       "comment": "",
-      "attending": 4
+      "attending": 5
     },
     {
       "id": 53748263,
@@ -110,7 +100,7 @@
       "end": "2026-06-29T23:00:00+02:00",
       "place": "KSF",
       "comment": "",
-      "attending": 2
+      "attending": 4
     }
   ]
 }
