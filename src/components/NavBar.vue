@@ -40,7 +40,7 @@
             <FlagDk class="lang-flag" />
           </button>
           <button :class="['lang-btn', { active: locale === 'en' }]" @click="setLocale('en')" title="English">
-            <GlobeIcon class="lang-globe" />
+            <span class="lang-emoji">🌍</span>
           </button>
         </div>
         <button class="hamburger" :class="{ open: menuOpen }" @click="menuOpen = !menuOpen" aria-label="Menu">
@@ -69,7 +69,7 @@
             <FlagDk class="mobile-lang-icon flag" />
           </button>
           <button :class="['mobile-lang-btn', { active: locale === 'en' }]" @click="setLocale('en'); menuOpen = false">
-            <GlobeIcon class="mobile-lang-icon globe" />
+            <span class="mobile-lang-emoji">🌍</span>
           </button>
         </div>
       </div>
@@ -82,7 +82,6 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useReglerStore } from '../stores/regler.js'
 import FlagDk from './FlagDk.vue'
-import GlobeIcon from './GlobeIcon.vue'
 
 const { t, locale } = useI18n()
 const dropdownOpen = ref(false)
@@ -158,7 +157,7 @@ function setLocale(lang)   { locale.value = lang; localStorage.setItem('lang', l
 .lang-btn:hover { opacity: 1; color: var(--white); }
 .lang-btn.active { opacity: 1; color: var(--white-pure); background: var(--blue); border-color: var(--blue); }
 .lang-flag { width: 22px; height: 17px; display: block; border-radius: 2px; }
-.lang-globe { width: 17px; height: 17px; display: block; }
+.lang-emoji { font-size: 1rem; line-height: 1; }
 
 /* Hamburger — hidden on desktop */
 .hamburger {
@@ -211,8 +210,8 @@ function setLocale(lang)   { locale.value = lang; localStorage.setItem('lang', l
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
 }
 .mobile-lang-btn.active { border-color: var(--blue); color: var(--white-pure); background: var(--border2); }
-.mobile-lang-icon.flag { width: 22px; height: 17px; display: block; border-radius: 2px; }
-.mobile-lang-icon.globe { width: 17px; height: 17px; display: block; }
+.mobile-lang-icon { width: 22px; height: 17px; display: block; border-radius: 2px; }
+.mobile-lang-emoji { font-size: 1.1rem; line-height: 1; }
 
 .mobile-slide-enter-active, .mobile-slide-leave-active { transition: opacity 0.2s, transform 0.2s; }
 .mobile-slide-enter-from { opacity: 0; transform: translateY(-8px); }
