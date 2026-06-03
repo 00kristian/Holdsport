@@ -31,6 +31,7 @@
     "59329": { "group": "staff", "roleKey": "assistantSenior", "emoji": "🧑", "alsoPlayer": true, "order": 2 },
     "1901293": { "group": "staff", "roleKey": "assistantAdmin", "emoji": "📋", "alsoPlayer": true, "order": 3 },
     "863142": { "title": "Beer manager" },
-    "862791": { "title": "Party manager" }
+    "862791": { "title": "Party manager" },
+    "1976938": { "title": "Chief of Cutting-edge Knowledge" }
   }
 }
