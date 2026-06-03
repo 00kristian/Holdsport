@@ -118,7 +118,7 @@ const stats = computed(() => [
 .stat-num { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.06em; color: var(--white-pure); line-height: 1; }
 .stat-label { font-family: var(--font-cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 0.1rem; }
 
-.home-main { flex: 1; display: flex; flex-direction: column; }
+.home-main { display: flex; flex-direction: column; min-height: 100%; }
 
 /* Next up */
 .next-up { flex: 1; padding-bottom: 3rem; }
