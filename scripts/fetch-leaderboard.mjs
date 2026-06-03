@@ -3,9 +3,12 @@
  * fetch-leaderboard.mjs — generates src/data/leaderboard.json from the Holdsport API.
  *
  * Builds the attendance leaderboard ("mød-op-konge"): team members ranked by how
- * many activities they've signed up for ("Tilmeldt") this season. Computed at
+ * many activities they've signed up for ("Tilmeldt") per season. Computed at
  * build time and shipped as a committed JSON, so no credentials reach the browser.
  * Runs before `npm run build` (see "prebuild") alongside the roster/program fetch.
+ *
+ * Output format: { seasons: [ { label, seasonStart, generatedAt, activitiesCounted, ranking } ] }
+ * The UI shows a dropdown to select which season to display.
  *
  * Note on "attendance": this is RSVP status (status_code 1 = Tilmeldt), NOT
  * coach-verified presence — it's the best signal the API offers. The UI says so.
@@ -29,9 +32,14 @@ const ROOT = path.resolve(__dirname, '..')
 const CONFIG_PATH = path.join(__dirname, 'roster-config.json')
 const OUT_PATH = path.join(ROOT, 'src', 'data', 'leaderboard.json')
 
-// Season window. Bounded (not all-time) so numbers don't creep forever and
-// newcomers can still catch up. Bump this each season.
-const SEASON_START = '2025-08-01'
+// All seasons to include, newest first. Season boundaries are 1 August – 31 July.
+// Add a new entry here each August when a new season starts.
+const SEASONS = [
+  { label: '25/26', start: '2025-08-01', end: null          }, // current — end=null means up to today
+  { label: '24/25', start: '2024-08-01', end: '2025-07-31' },
+  { label: '23/24', start: '2023-08-01', end: '2024-07-31' },
+]
+
 const PER_PAGE = 50
 
 function loadEnv() {
@@ -73,13 +81,13 @@ function cleanName(m) {
     .trim()
 }
 
-// Fetch every activity from SEASON_START onward, following pagination until a
+// Fetch every activity from earliestStart onward, following pagination until a
 // page comes back empty. Dedupe by id in case pages overlap.
-async function fetchActivities(teamId, email, password) {
+async function fetchAllActivities(teamId, email, password, earliestStart) {
   const byId = new Map()
-  for (let page = 1; page < 100; page++) {
+  for (let page = 1; page < 200; page++) {
     const batch = await api(
-      `/teams/${teamId}/activities?date=${SEASON_START}&per_page=${PER_PAGE}&page=${page}`,
+      `/teams/${teamId}/activities?date=${earliestStart}&per_page=${PER_PAGE}&page=${page}`,
       email, password,
     )
     if (!batch.length) break
@@ -88,34 +96,30 @@ async function fetchActivities(teamId, email, password) {
   return [...byId.values()]
 }
 
-// Count practices and games only — not socials, meetings, cups, etc. "Åben
-// Senior" sessions are event_type "Træning", so they're included (unlike the
-// Program page, the leaderboard does NOT apply programExcludeNames).
+// Count practices and games only — not socials, meetings, cups, etc.
 function isPracticeOrGame(a) {
   const t = String(a.event_type || '').toLowerCase()
   return /træning|practice|training/.test(t) || /kamp|match|game/.test(t)
 }
-// Cancelled sessions are prefixed "AFLYST" in the name — a signup for one isn't
-// real turnout, so leave them out.
+
+// Cancelled sessions are prefixed "AFLYST" — a signup for one isn't real turnout.
 function isCancelled(a) {
   return /^\s*aflyst\b/i.test(a.name || '')
 }
 
-function buildLeaderboard(members, activities, config) {
+function buildSeasonLeaderboard(season, members, allActivities, config) {
   const excluded = new Set((config.excludeMemberIds || []).map(Number))
   const overrides = config.overrides || {}
   const today = new Date().toISOString().split('T')[0]
+  const end = season.end || today
 
-  // Practices + games that have already started this season (signups for things
-  // that actually happened), excluding cancelled sessions.
-  const counted = activities.filter((a) => {
+  const counted = allActivities.filter((a) => {
     const date = String(a.starttime || '').split('T')[0]
-    if (!date || date < SEASON_START || date > today) return false
+    if (!date || date < season.start || date > end) return false
     if (!isPracticeOrGame(a) || isCancelled(a)) return false
     return true
   })
 
-  // Tally signups (status_code 1 = Tilmeldt) by user.
   const tally = new Map()
   for (const a of counted) {
     for (const u of a.activities_users || []) {
@@ -123,21 +127,19 @@ function buildLeaderboard(members, activities, config) {
     }
   }
 
-  // Join against current members so everyone appears (including 0-counts), and
-  // so former members who left the team drop off — mirrors the roster's filter.
   const ranking = members
     .filter((m) => m.role !== 5 && !excluded.has(m.id))
     .map((m) => {
       const ov = overrides[String(m.id)] || {}
       return { userId: m.id, name: ov.name || cleanName(m), attended: tally.get(m.id) || 0 }
     })
-    // Sort by attendance desc, ties broken by name (stable, predictable).
     .sort((a, b) => b.attended - a.attended || a.name.localeCompare(b.name, 'da'))
 
   return {
+    label: season.label,
+    seasonStart: season.start,
     generatedAt: new Date().toISOString(),
     source: 'holdsport-api',
-    seasonStart: SEASON_START,
     activitiesCounted: counted.length,
     ranking,
   }
@@ -150,21 +152,28 @@ async function main() {
 
   if (!email || !password || !teamId) {
     console.warn('⚠ Holdsport credentials not set — keeping existing leaderboard.json.')
-    return // exit 0 so builds/deploys never fail on missing secrets
+    return
   }
 
-  const [members, activities] = await Promise.all([
+  // Fetch from the earliest season start so one call covers all seasons.
+  const earliestStart = SEASONS[SEASONS.length - 1].start
+
+  const [members, allActivities] = await Promise.all([
     api(`/teams/${teamId}/members`, email, password),
-    fetchActivities(teamId, email, password),
+    fetchAllActivities(teamId, email, password, earliestStart),
   ])
-  const leaderboard = buildLeaderboard(members, activities, config)
+
+  const seasons = SEASONS.map((s) => buildSeasonLeaderboard(s, members, allActivities, config))
+
+  const output = { seasons }
 
   fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true })
-  fs.writeFileSync(OUT_PATH, JSON.stringify(leaderboard, null, 2) + '\n')
-  console.log(
-    `✓ Wrote leaderboard: ${leaderboard.ranking.length} members over ` +
-    `${leaderboard.activitiesCounted} activities to ${path.relative(ROOT, OUT_PATH)}`,
-  )
+  fs.writeFileSync(OUT_PATH, JSON.stringify(output, null, 2) + '\n')
+
+  for (const s of seasons) {
+    console.log(`✓ ${s.label}: ${s.ranking.length} members, ${s.activitiesCounted} activities`)
+  }
+  console.log(`Wrote to ${path.relative(ROOT, OUT_PATH)}`)
 }
 
 main().catch((err) => {
