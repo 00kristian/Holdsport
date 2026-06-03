@@ -3,492 +3,585 @@
     {
       "label": "25/26",
       "seasonStart": "2025-08-01",
-      "generatedAt": "2026-06-03T07:27:54.296Z",
+      "generatedAt": "2026-06-03T08:04:56.598Z",
       "source": "holdsport-api",
       "activitiesCounted": 112,
       "ranking": [
         {
           "userId": 1099419,
           "name": "Julien Bedard",
-          "attended": 71
+          "attended": 71,
+          "frameldt": 18
         },
         {
           "userId": 1624734,
           "name": "Michael Prencipe",
-          "attended": 68
+          "attended": 68,
+          "frameldt": 11
         },
         {
           "userId": 59329,
           "name": "Oscar Pino",
-          "attended": 64
+          "attended": 64,
+          "frameldt": 12
         },
         {
           "userId": 4107555,
           "name": "Maksim Telelekov",
-          "attended": 60
+          "attended": 60,
+          "frameldt": 20
         },
         {
           "userId": 1572015,
           "name": "William Nistrup",
-          "attended": 56
+          "attended": 56,
+          "frameldt": 19
         },
         {
           "userId": 1901293,
           "name": "Kristian Berlin",
-          "attended": 55
+          "attended": 55,
+          "frameldt": 22
         },
         {
           "userId": 862574,
           "name": "Jannick W",
-          "attended": 53
+          "attended": 53,
+          "frameldt": 24
         },
         {
           "userId": 1341624,
           "name": "Toni Tuira",
-          "attended": 53
+          "attended": 53,
+          "frameldt": 21
         },
         {
           "userId": 2018088,
           "name": "Anton Svejstrup",
-          "attended": 51
+          "attended": 51,
+          "frameldt": 17
         },
         {
           "userId": 1444828,
           "name": "Danny Triesler",
-          "attended": 48
+          "attended": 48,
+          "frameldt": 50
         },
         {
           "userId": 1550001,
           "name": "Elias Rasmussen",
-          "attended": 48
+          "attended": 48,
+          "frameldt": 32
         },
         {
           "userId": 863142,
           "name": "Maxime Bettez",
-          "attended": 48
+          "attended": 48,
+          "frameldt": 34
         },
         {
           "userId": 1309032,
           "name": "Alex Shelko",
-          "attended": 46
+          "attended": 46,
+          "frameldt": 16
         },
         {
           "userId": 1976491,
           "name": "Guillem Torner",
-          "attended": 44
+          "attended": 44,
+          "frameldt": 8
         },
         {
           "userId": 2264575,
           "name": "Mads Monies",
-          "attended": 44
+          "attended": 44,
+          "frameldt": 4
         },
         {
           "userId": 2498922,
           "name": "James Curliss",
-          "attended": 43
+          "attended": 43,
+          "frameldt": 21
         },
         {
           "userId": 1781129,
           "name": "Toby Keating",
-          "attended": 41
+          "attended": 41,
+          "frameldt": 2
         },
         {
           "userId": 2198618,
           "name": "Karl Beckman",
-          "attended": 37
+          "attended": 37,
+          "frameldt": 23
         },
         {
           "userId": 5335672,
           "name": "Sebastian Ammitsøe",
-          "attended": 37
+          "attended": 37,
+          "frameldt": 9
         },
         {
           "userId": 1257336,
           "name": "Balder Lehmann",
-          "attended": 31
+          "attended": 31,
+          "frameldt": 48
         },
         {
           "userId": 1531322,
           "name": "Christian Keller",
-          "attended": 28
+          "attended": 28,
+          "frameldt": 6
         },
         {
           "userId": 1338591,
           "name": "Viktor Pesenti",
-          "attended": 25
+          "attended": 25,
+          "frameldt": 11
         },
         {
           "userId": 5587653,
           "name": "Francesco Iannantuono",
-          "attended": 20
+          "attended": 20,
+          "frameldt": 5
         },
         {
           "userId": 862791,
           "name": "Christian Lacoppidan",
-          "attended": 19
+          "attended": 19,
+          "frameldt": 49
         },
         {
           "userId": 2131134,
           "name": "Seb Jensen",
-          "attended": 18
+          "attended": 18,
+          "frameldt": 10
         },
         {
           "userId": 1789149,
           "name": "Benjamin Møller",
-          "attended": 17
+          "attended": 17,
+          "frameldt": 27
         },
         {
           "userId": 5855040,
           "name": "Simon Søgaard Heidensleben",
-          "attended": 13
+          "attended": 13,
+          "frameldt": 10
         },
         {
           "userId": 1976938,
           "name": "Lauritz Trolle",
-          "attended": 10
+          "attended": 10,
+          "frameldt": 2
         },
         {
           "userId": 5554221,
           "name": "Emil Hecht",
-          "attended": 7
+          "attended": 7,
+          "frameldt": 10
         },
         {
           "userId": 4400637,
           "name": "Jesper Stig Malle",
-          "attended": 5
+          "attended": 5,
+          "frameldt": 9
         },
         {
           "userId": 5711593,
           "name": "Kim Stig Malle",
-          "attended": 4
+          "attended": 4,
+          "frameldt": 3
         }
       ]
     },
     {
       "label": "24/25",
       "seasonStart": "2024-08-01",
-      "generatedAt": "2026-06-03T07:27:54.297Z",
+      "generatedAt": "2026-06-03T08:04:56.598Z",
       "source": "holdsport-api",
       "activitiesCounted": 114,
       "ranking": [
         {
           "userId": 1531322,
           "name": "Christian Keller",
-          "attended": 76
+          "attended": 76,
+          "frameldt": 5
         },
         {
           "userId": 1099419,
           "name": "Julien Bedard",
-          "attended": 72
+          "attended": 72,
+          "frameldt": 17
         },
         {
           "userId": 1624734,
           "name": "Michael Prencipe",
-          "attended": 69
+          "attended": 69,
+          "frameldt": 14
         },
         {
           "userId": 1309032,
           "name": "Alex Shelko",
-          "attended": 62
+          "attended": 62,
+          "frameldt": 19
         },
         {
           "userId": 2264575,
           "name": "Mads Monies",
-          "attended": 61
+          "attended": 61,
+          "frameldt": 10
         },
         {
           "userId": 1901293,
           "name": "Kristian Berlin",
-          "attended": 59
+          "attended": 59,
+          "frameldt": 22
         },
         {
           "userId": 862574,
           "name": "Jannick W",
-          "attended": 58
+          "attended": 58,
+          "frameldt": 27
         },
         {
           "userId": 59329,
           "name": "Oscar Pino",
-          "attended": 58
+          "attended": 58,
+          "frameldt": 12
         },
         {
           "userId": 863142,
           "name": "Maxime Bettez",
-          "attended": 57
+          "attended": 57,
+          "frameldt": 32
         },
         {
           "userId": 1572015,
           "name": "William Nistrup",
-          "attended": 52
+          "attended": 52,
+          "frameldt": 7
         },
         {
           "userId": 2018088,
           "name": "Anton Svejstrup",
-          "attended": 44
+          "attended": 44,
+          "frameldt": 16
         },
         {
           "userId": 1341624,
           "name": "Toni Tuira",
-          "attended": 42
+          "attended": 42,
+          "frameldt": 35
         },
         {
           "userId": 4107555,
           "name": "Maksim Telelekov",
-          "attended": 40
+          "attended": 40,
+          "frameldt": 19
         },
         {
           "userId": 2198618,
           "name": "Karl Beckman",
-          "attended": 36
+          "attended": 36,
+          "frameldt": 20
         },
         {
           "userId": 1976938,
           "name": "Lauritz Trolle",
-          "attended": 36
+          "attended": 36,
+          "frameldt": 28
         },
         {
           "userId": 1781129,
           "name": "Toby Keating",
-          "attended": 36
+          "attended": 36,
+          "frameldt": 9
         },
         {
           "userId": 2498922,
           "name": "James Curliss",
-          "attended": 35
+          "attended": 35,
+          "frameldt": 26
         },
         {
           "userId": 2131134,
           "name": "Seb Jensen",
-          "attended": 33
+          "attended": 33,
+          "frameldt": 29
         },
         {
           "userId": 862791,
           "name": "Christian Lacoppidan",
-          "attended": 27
+          "attended": 27,
+          "frameldt": 44
         },
         {
           "userId": 1444828,
           "name": "Danny Triesler",
-          "attended": 27
+          "attended": 27,
+          "frameldt": 42
         },
         {
           "userId": 1789149,
           "name": "Benjamin Møller",
-          "attended": 25
+          "attended": 25,
+          "frameldt": 18
         },
         {
           "userId": 1338591,
           "name": "Viktor Pesenti",
-          "attended": 16
+          "attended": 16,
+          "frameldt": 12
         },
         {
           "userId": 1257336,
           "name": "Balder Lehmann",
-          "attended": 11
+          "attended": 11,
+          "frameldt": 33
         },
         {
           "userId": 1550001,
           "name": "Elias Rasmussen",
-          "attended": 1
+          "attended": 1,
+          "frameldt": 0
         },
         {
           "userId": 5554221,
           "name": "Emil Hecht",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 5587653,
           "name": "Francesco Iannantuono",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 1976491,
           "name": "Guillem Torner",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 4400637,
           "name": "Jesper Stig Malle",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 5711593,
           "name": "Kim Stig Malle",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 5335672,
           "name": "Sebastian Ammitsøe",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 5855040,
           "name": "Simon Søgaard Heidensleben",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         }
       ]
     },
     {
       "label": "23/24",
       "seasonStart": "2023-08-01",
-      "generatedAt": "2026-06-03T07:27:54.298Z",
+      "generatedAt": "2026-06-03T08:04:56.600Z",
       "source": "holdsport-api",
       "activitiesCounted": 102,
       "ranking": [
         {
           "userId": 1309032,
           "name": "Alex Shelko",
-          "attended": 72
+          "attended": 72,
+          "frameldt": 11
         },
         {
           "userId": 1624734,
           "name": "Michael Prencipe",
-          "attended": 61
+          "attended": 61,
+          "frameldt": 9
         },
         {
           "userId": 1341624,
           "name": "Toni Tuira",
-          "attended": 57
+          "attended": 57,
+          "frameldt": 24
         },
         {
           "userId": 862791,
           "name": "Christian Lacoppidan",
-          "attended": 56
+          "attended": 56,
+          "frameldt": 24
         },
         {
           "userId": 862574,
           "name": "Jannick W",
-          "attended": 56
+          "attended": 56,
+          "frameldt": 24
         },
         {
           "userId": 1781129,
           "name": "Toby Keating",
-          "attended": 55
+          "attended": 55,
+          "frameldt": 6
         },
         {
           "userId": 1338591,
           "name": "Viktor Pesenti",
-          "attended": 51
+          "attended": 51,
+          "frameldt": 16
         },
         {
           "userId": 1789149,
           "name": "Benjamin Møller",
-          "attended": 47
+          "attended": 47,
+          "frameldt": 24
         },
         {
           "userId": 1099419,
           "name": "Julien Bedard",
-          "attended": 47
+          "attended": 47,
+          "frameldt": 9
         },
         {
           "userId": 2198618,
           "name": "Karl Beckman",
-          "attended": 42
+          "attended": 42,
+          "frameldt": 3
         },
         {
           "userId": 2498922,
           "name": "James Curliss",
-          "attended": 41
+          "attended": 41,
+          "frameldt": 21
         },
         {
           "userId": 1444828,
           "name": "Danny Triesler",
-          "attended": 38
+          "attended": 38,
+          "frameldt": 42
         },
         {
           "userId": 863142,
           "name": "Maxime Bettez",
-          "attended": 38
+          "attended": 38,
+          "frameldt": 17
         },
         {
           "userId": 1976491,
           "name": "Guillem Torner",
-          "attended": 26
+          "attended": 26,
+          "frameldt": 0
         },
         {
           "userId": 1531322,
           "name": "Christian Keller",
-          "attended": 18
+          "attended": 18,
+          "frameldt": 0
         },
         {
           "userId": 2264575,
           "name": "Mads Monies",
-          "attended": 16
+          "attended": 16,
+          "frameldt": 2
         },
         {
           "userId": 59329,
           "name": "Oscar Pino",
-          "attended": 16
+          "attended": 16,
+          "frameldt": 2
         },
         {
           "userId": 2131134,
           "name": "Seb Jensen",
-          "attended": 11
+          "attended": 11,
+          "frameldt": 7
         },
         {
           "userId": 1976938,
           "name": "Lauritz Trolle",
-          "attended": 10
+          "attended": 10,
+          "frameldt": 6
         },
         {
           "userId": 1901293,
           "name": "Kristian Berlin",
-          "attended": 7
+          "attended": 7,
+          "frameldt": 0
         },
         {
           "userId": 1257336,
           "name": "Balder Lehmann",
-          "attended": 5
+          "attended": 5,
+          "frameldt": 71
         },
         {
           "userId": 2018088,
           "name": "Anton Svejstrup",
-          "attended": 2
+          "attended": 2,
+          "frameldt": 0
         },
         {
           "userId": 1550001,
           "name": "Elias Rasmussen",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 5554221,
           "name": "Emil Hecht",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 5587653,
           "name": "Francesco Iannantuono",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 4400637,
           "name": "Jesper Stig Malle",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 5711593,
           "name": "Kim Stig Malle",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 4107555,
           "name": "Maksim Telelekov",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 5335672,
           "name": "Sebastian Ammitsøe",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 5855040,
           "name": "Simon Søgaard Heidensleben",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         },
         {
           "userId": 1572015,
           "name": "William Nistrup",
-          "attended": 0
+          "attended": 0,
+          "frameldt": 0
         }
       ]
     }

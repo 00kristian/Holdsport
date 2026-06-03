@@ -120,10 +120,12 @@ function buildSeasonLeaderboard(season, members, allActivities, config) {
     return true
   })
 
-  const tally = new Map()
+  const tallyAttended  = new Map() // status_code 1 = Tilmeldt
+  const tallyFrameldt  = new Map() // status_code 2 = Frameldt
   for (const a of counted) {
     for (const u of a.activities_users || []) {
-      if (u.status_code === 1) tally.set(u.user_id, (tally.get(u.user_id) || 0) + 1)
+      if (u.status_code === 1) tallyAttended.set(u.user_id, (tallyAttended.get(u.user_id) || 0) + 1)
+      if (u.status_code === 2) tallyFrameldt.set(u.user_id, (tallyFrameldt.get(u.user_id) || 0) + 1)
     }
   }
 
@@ -131,7 +133,12 @@ function buildSeasonLeaderboard(season, members, allActivities, config) {
     .filter((m) => m.role !== 5 && !excluded.has(m.id))
     .map((m) => {
       const ov = overrides[String(m.id)] || {}
-      return { userId: m.id, name: ov.name || cleanName(m), attended: tally.get(m.id) || 0 }
+      return {
+        userId: m.id,
+        name: ov.name || cleanName(m),
+        attended: tallyAttended.get(m.id) || 0,
+        frameldt: tallyFrameldt.get(m.id) || 0,
+      }
     })
     .sort((a, b) => b.attended - a.attended || a.name.localeCompare(b.name, 'da'))
 

@@ -144,10 +144,8 @@ export default {
     activitiesShort: 'aktiviteter',
     updated: 'Opdateret',
     empty: 'Ingen data endnu.',
-    frameldt: 'Frameldt Mester',
-    frameldtDesc: 'Flest udeblivelser denne sæson',
-    frameldtAbsences: 'udeblivelser',
-    frameldtClose: 'Luk',
+    tabAttended: 'Tilmeldt',
+    tabFrameldt: 'Frameldt',
   },
   activity: {
     fallbackName: 'Aktivitet',
