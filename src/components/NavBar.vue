@@ -36,8 +36,12 @@
       <!-- Right side: lang switcher + hamburger -->
       <div class="nav-right">
         <div class="lang-switcher">
-          <button :class="['lang-btn', { active: locale === 'da' }]" @click="setLocale('da')" title="Dansk">DA</button>
-          <button :class="['lang-btn', { active: locale === 'en' }]" @click="setLocale('en')" title="English">EN</button>
+          <button :class="['lang-btn', { active: locale === 'da' }]" @click="setLocale('da')" title="Dansk">
+            <FlagDk class="lang-flag" />
+          </button>
+          <button :class="['lang-btn', { active: locale === 'en' }]" @click="setLocale('en')" title="English">
+            <GlobeIcon class="lang-globe" />
+          </button>
         </div>
         <button class="hamburger" :class="{ open: menuOpen }" @click="menuOpen = !menuOpen" aria-label="Menu">
           <span></span><span></span><span></span>
@@ -61,8 +65,12 @@
           <li><RouterLink to="/fremmoede" @click="menuOpen = false">{{ t('nav.leaderboard') }}</RouterLink></li>
         </ul>
         <div class="mobile-lang">
-          <button :class="['mobile-lang-btn', { active: locale === 'da' }]" @click="setLocale('da'); menuOpen = false">Dansk</button>
-          <button :class="['mobile-lang-btn', { active: locale === 'en' }]" @click="setLocale('en'); menuOpen = false">English</button>
+          <button :class="['mobile-lang-btn', { active: locale === 'da' }]" @click="setLocale('da'); menuOpen = false">
+            <FlagDk class="mobile-lang-icon flag" /> Dansk
+          </button>
+          <button :class="['mobile-lang-btn', { active: locale === 'en' }]" @click="setLocale('en'); menuOpen = false">
+            <GlobeIcon class="mobile-lang-icon globe" /> English
+          </button>
         </div>
       </div>
     </Transition>
@@ -73,6 +81,8 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useReglerStore } from '../stores/regler.js'
+import FlagDk from './FlagDk.vue'
+import GlobeIcon from './GlobeIcon.vue'
 
 const { t, locale } = useI18n()
 const dropdownOpen = ref(false)
@@ -136,18 +146,19 @@ function setLocale(lang)   { locale.value = lang; localStorage.setItem('lang', l
 /* Right side */
 .nav-right { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
 
-/* Lang switcher — text labels (flag emoji don't render on Windows browsers) */
+/* Lang switcher — flag + globe icons */
 .lang-switcher { display: flex; gap: 0.2rem; }
 .lang-btn {
   background: none; border: 1px solid var(--border2);
-  border-radius: var(--radius-sm); padding: 0.25rem 0.5rem;
-  font-family: var(--font-cond); font-size: 0.78rem; font-weight: 700;
-  letter-spacing: 0.06em; color: var(--steel);
-  cursor: pointer; line-height: 1;
+  border-radius: var(--radius-sm); padding: 0.28rem 0.45rem;
+  cursor: pointer; line-height: 1; display: flex; align-items: center;
+  color: var(--muted);
   opacity: 0.65; transition: opacity 0.15s, color 0.15s, background 0.15s, border-color 0.15s;
 }
 .lang-btn:hover { opacity: 1; color: var(--white); }
 .lang-btn.active { opacity: 1; color: var(--white-pure); background: var(--blue); border-color: var(--blue); }
+.lang-flag { width: 22px; height: 17px; display: block; border-radius: 2px; }
+.lang-globe { width: 17px; height: 17px; display: block; }
 
 /* Hamburger — hidden on desktop */
 .hamburger {
@@ -197,9 +208,11 @@ function setLocale(lang)   { locale.value = lang; localStorage.setItem('lang', l
   border-radius: var(--radius-sm); padding: 0.6rem; cursor: pointer;
   font-family: var(--font-cond); font-size: 0.85rem; font-weight: 600;
   letter-spacing: 0.06em; color: var(--steel);
-  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
 }
 .mobile-lang-btn.active { border-color: var(--blue); color: var(--white-pure); background: var(--border2); }
+.mobile-lang-icon.flag { width: 22px; height: 17px; display: block; border-radius: 2px; }
+.mobile-lang-icon.globe { width: 17px; height: 17px; display: block; }
 
 .mobile-slide-enter-active, .mobile-slide-leave-active { transition: opacity 0.2s, transform 0.2s; }
 .mobile-slide-enter-from { opacity: 0; transform: translateY(-8px); }
