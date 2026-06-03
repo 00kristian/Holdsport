@@ -5,9 +5,9 @@
     "row": { "emoji": "🌍" }
   },
   "editions": [
-    { "year": "2025", "winner": "dk", "score": "4–1" },
-    { "year": "2024", "winner": "row", "score": "4–3" },
-    { "year": "2023", "winner": "row", "score": "4–3" },
-    { "year": "2022", "winner": "row", "score": "4–3" }
+    { "year": "25/26", "winner": "dk", "score": "4–1" },
+    { "year": "24/25", "winner": "row", "score": "4–3" },
+    { "year": "23/24", "winner": "row", "score": "4–3" },
+    { "year": "22/23", "winner": "row", "score": "4–3" }
   ]
 }
