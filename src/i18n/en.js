@@ -144,10 +144,8 @@ export default {
     activitiesShort: 'activities',
     updated: 'Updated',
     empty: 'No data yet.',
-    frameldt: 'Frameldt Champion',
-    frameldtDesc: 'Most absences this season',
-    frameldtAbsences: 'absences',
-    frameldtClose: 'Close',
+    tabAttended: 'Tilmeldt',
+    tabFrameldt: 'Frameldt',
   },
   activity: {
     fallbackName: 'Activity',
