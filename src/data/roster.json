@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-03T08:04:03.900Z",
+  "generatedAt": "2026-06-03T17:11:43.656Z",
   "source": "holdsport-api",
   "staff": [
     {
@@ -113,7 +113,8 @@
     {
       "name": "Lauritz Trolle",
       "roleKey": "player",
-      "emoji": "🏒"
+      "emoji": "🏒",
+      "title": "Chief of Cutting-edge Knowledge"
     },
     {
       "name": "Mads Monies",
